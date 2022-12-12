@@ -5,13 +5,9 @@ import Navbar from 'components/shared/Navbar';
 import { ArrowLeftIcon, ArrowRightIcon, GithubIcon, LinkedInIcon, MailIcon, PhoneIcon, WhatsappIcon } from 'icons';
 import Head from 'next/head';
 import { useRef } from 'react';
-import styles from 'styles/Index.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Home = () => {
-    const navigationPrevRef = useRef(null);
-    const navigationNextRef = useRef(null);
-
     const sliderOptions = {
         spaceBetween: 32,
         slidesPerView: 1,
@@ -30,12 +26,8 @@ const Home = () => {
             },
         },
         navigation: {
-            prevEl: navigationPrevRef.current,
-            nextEl: navigationNextRef.current,
-        },
-        onBeforeInit: (swiper: any) => {
-            swiper.params.navigation.prevEl = navigationPrevRef.current;
-            swiper.params.navigation.nextEl = navigationNextRef.current;
+            prevEl: '.prev-btn',
+            nextEl: '.next-btn',
         },
     };
 
@@ -162,15 +154,13 @@ const Home = () => {
                         <div className="hidden lg:flex items-center gap-8">
                             <button
                                 type="button"
-                                className="w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
-                                ref={navigationPrevRef}
+                                className="prev-btn w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
                             >
                                 <ArrowLeftIcon />
                             </button>
                             <button
                                 type="button"
-                                className="w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
-                                ref={navigationNextRef}
+                                className="next-btn w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
                             >
                                 <ArrowRightIcon />
                             </button>
@@ -186,27 +176,25 @@ const Home = () => {
                             ))}
                         </Swiper>
 
-                        {/* <div className="flex lg:hidden items-center justify-center gap-8 mt-9">
+                        <div className="flex lg:hidden items-center justify-center gap-8 mt-9">
                             <button
                                 type="button"
-                                className="w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
-                                ref={navigationPrevRef}
+                                className="prev-btn w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
                             >
                                 <ArrowLeftIcon />
                             </button>
                             <button
                                 type="button"
-                                className="w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
-                                ref={navigationNextRef}
+                                className="next-btn w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
                             >
                                 <ArrowRightIcon />
                             </button>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section className="py-16 md:py-32">
+            <section className="pt-16 pb-24 md:pt-32 md:pb-32">
                 <div className="container">
                     <h2 className="text-primary">My Portfolio</h2>
 
@@ -230,7 +218,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="py-32 bg-primary">
+            <section className="py-24 md:py-32 bg-primary">
                 <div className="container">
                     <div className="max-w-xl">
                         <h2 className="text-white">Let’s skyrocket your next project together</h2>
@@ -245,7 +233,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="pt-20 pb-24 overflow-hidden">
+            <section className="pt-16 pb-20 md:pt-20 md:pb-24 overflow-hidden">
                 <div className="container">
                     <div className="max-w-xl mx-auto">
                         <h2 className="text-primary text-center">

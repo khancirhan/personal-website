@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <header className={styles['navbar'] + ' fixed top-0 left-0 right-0 flex items-center bg-white h-[80px] z-10'}>
             <div className="container">
-                <div className="flex items-center">
+                <div className="flex items-center overflow-scroll">
                     <div className="flex items-center gap-2">
                         <div className="h-8 w-8 text-white rounded-full bg-primary flex justify-center items-center font-bold text-xl">
                             C
