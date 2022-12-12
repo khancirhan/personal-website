@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import PortfolioCard from 'components/portfolio/PortfolioCard';
 import ServiceCard from 'components/services/ServiceCard';
 import Navbar from 'components/shared/Navbar';
@@ -50,8 +51,8 @@ const Home = () => {
 
             <section className="min-h-screen pt-[68px]">
                 <div className="container">
-                    <div className="pt-[20vh]">
-                        <h1 className="">
+                    <div className="pt-[16vh] md:pt-[20vh]">
+                        <h1>
                             Hey! I’m Cirhan Yaqoob <div className="text-primary">Full Stack Developer</div>
                         </h1>
 
@@ -60,24 +61,24 @@ const Home = () => {
                             specialized in UI/UX, Branding and digital designs.
                         </p>
 
-                        <button className="btn-primary text-lg rounded-2xl px-12 py-4 mt-12">Say Hello!</button>
+                        <button className="btn-primary btn-lg mt-12">Say Hello!</button>
                     </div>
                 </div>
             </section>
 
-            <section className="py-40 pb-56">
+            <section className="py-16 md:py-40">
                 <div className="container">
-                    <div className="grid grid-cols-2 gap-24">
+                    <div className="grid grid-cols-1 gap-24 lg:grid-cols-2">
                         <div className="col-span-1">
-                            <div className="relative">
+                            <div className="relative flex">
                                 <img
-                                    className="absolute left-0 w-3/5 top-14 rounded-4xl aspect-[2/3] object-cover"
+                                    className="relative top-12 left-0 w-[48%] lg:w-[60%] rounded-4xl aspect-[2/3] object-cover"
                                     src="https://images.unsplash.com/photo-1520583457224-aee11bad5112?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80"
                                     alt=""
                                 />
 
                                 <img
-                                    className="absolute right-0 -top-14 w-3/5 rounded-4xl aspect-[2/3] object-cover"
+                                    className="absolute -top-12 right-0 w-[48%] lg:w-[60%] rounded-4xl aspect-[2/3] object-cover"
                                     src="https://images.unsplash.com/photo-1665686306574-1ace09918530?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                                     alt=""
                                 />
@@ -101,7 +102,7 @@ const Home = () => {
                             <div className="mt-12">
                                 <h6>You Can Find Me also Here:</h6>
 
-                                <div className="flex items-center gap-8 mt-6">
+                                <div className="flex items-center flex-wrap gap-8 mt-6">
                                     <a
                                         target="_blank"
                                         href="https://api.whatsapp.com/send?phone=9797790498"
@@ -112,7 +113,7 @@ const Home = () => {
                                             <WhatsappIcon width="32" />
                                         </div>
 
-                                        <div className="font-semibold text-lg">Whatsapp</div>
+                                        <div className="font-semibold text-base lg:text-lg">Whatsapp</div>
                                     </a>
 
                                     <a
@@ -124,7 +125,7 @@ const Home = () => {
                                         <div>
                                             <LinkedInIcon width="32" />
                                         </div>
-                                        <div className="font-semibold text-lg">LinkedIn</div>
+                                        <div className="font-semibold text-base lg:text-lg">LinkedIn</div>
                                     </a>
 
                                     <a
@@ -137,7 +138,7 @@ const Home = () => {
                                             <GithubIcon width="32" />
                                         </div>
 
-                                        <div className="font-semibold text-lg">Github</div>
+                                        <div className="font-semibold text-base lg:text-lg">Github</div>
                                     </a>
                                 </div>
                             </div>
@@ -146,7 +147,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="py-32">
+            <section className="py-16 md:py-32 overflow-hidden">
                 <div className="container">
                     <div className="flex items-center justify-between">
                         <div>
@@ -158,7 +159,7 @@ const Home = () => {
                             </p>
                         </div>
 
-                        <div className="flex items-center gap-8">
+                        <div className="hidden lg:flex items-center gap-8">
                             <button
                                 type="button"
                                 className="w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
@@ -176,19 +177,36 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="mt-12">
-                        <Swiper {...sliderOptions} className="py-6">
+                    <div className="mt-10 md:mt-16">
+                        <Swiper {...sliderOptions} className="overflow-visible">
                             {[1, 2, 3, 4].map((row, i) => (
                                 <SwiperSlide key={i} className="!h-auto">
                                     <ServiceCard />
                                 </SwiperSlide>
                             ))}
                         </Swiper>
+
+                        {/* <div className="flex lg:hidden items-center justify-center gap-8 mt-9">
+                            <button
+                                type="button"
+                                className="w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
+                                ref={navigationPrevRef}
+                            >
+                                <ArrowLeftIcon />
+                            </button>
+                            <button
+                                type="button"
+                                className="w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
+                                ref={navigationNextRef}
+                            >
+                                <ArrowRightIcon />
+                            </button>
+                        </div> */}
                     </div>
                 </div>
             </section>
 
-            <section className="py-32">
+            <section className="py-16 md:py-32">
                 <div className="container">
                     <h2 className="text-primary">My Portfolio</h2>
 
@@ -197,7 +215,7 @@ const Home = () => {
                         specialized in UI/UX, Branding and digital designs.
                     </p>
 
-                    <div className="grid grid-cols-2 gap-8 mt-16">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10 md:mt-16">
                         <div className="col-span-1">
                             <PortfolioCard />
                         </div>
@@ -207,7 +225,7 @@ const Home = () => {
                     </div>
 
                     <div className="flex justify-center">
-                        <button className="btn-primary text-lg rounded-2xl px-12 py-4 mt-20">Browse All</button>
+                        <button className="btn-primary btn-lg mt-20">Browse All</button>
                     </div>
                 </div>
             </section>
@@ -223,25 +241,23 @@ const Home = () => {
                         </p>
                     </div>
 
-                    <button className="bg-white text-primary font-semibold text-lg rounded-2xl px-12 py-4 mt-12">
-                        Contact Me
-                    </button>
+                    <button className="bg-white text-primary btn-lg mt-12">Contact Me</button>
                 </div>
             </section>
 
-            <section className="py-32">
+            <section className="pt-20 pb-24 overflow-hidden">
                 <div className="container">
                     <div className="max-w-xl mx-auto">
                         <h2 className="text-primary text-center">
-                            Technologies <br /> I&apos;ve worked wsith
+                            Technologies <br /> I&apos;ve worked with
                         </h2>
                     </div>
 
-                    <div className="mt-10">
-                        <Swiper spaceBetween={32} slidesPerView={'auto'} className="py-6">
+                    <div className="mt-16">
+                        <Swiper spaceBetween={32} slidesPerView={'auto'} className="overflow-visible">
                             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((row, i) => (
                                 <SwiperSlide key={i} className="!h-auto w-auto">
-                                    <div className="card card-shadow p-8 flex items-center gap-5">
+                                    <div className="card card-shadow rounded-3xl px-8 py-6 flex flex-col md:flex-row items-center gap-5">
                                         <img
                                             className="h-16"
                                             src="https://api2.illuminz.com/uploads/firebase_2122446bec.png"
@@ -256,15 +272,15 @@ const Home = () => {
                 </div>
             </section>
 
-            <footer className="pt-16 pb-12 border-t border-gray-100">
+            <footer className="pt-12 pb-12 border-t border-gray-100">
                 <div className="container">
                     <h2 className="text-center">Let’s Talk!</h2>
 
-                    <div className="grid grid-cols-11 gap-8 mt-12">
-                        <div className="col-span-3 col-start-2">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12">
+                        <div className="w-[300px]">
                             <div className="flex flex-col items-center">
                                 <div className="">
-                                    <PhoneIcon width={36} />
+                                    <PhoneIcon height={32} />
                                 </div>
                                 <h6 className="font-semibold mt-4">Call me</h6>
                                 <p className="mt-2">
@@ -272,10 +288,10 @@ const Home = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="col-span-3">
+                        <div className="w-[300px]">
                             <div className="flex flex-col items-center">
                                 <div>
-                                    <MailIcon width={36} />
+                                    <MailIcon height={32} />
                                 </div>
                                 <h6 className="font-semibold mt-4">Mail me</h6>
                                 <p className="mt-2">
@@ -285,10 +301,10 @@ const Home = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="col-span-3">
+                        <div className="w-[300px]">
                             <div className="flex flex-col items-center">
                                 <div>
-                                    <LinkedInIcon width={36} />
+                                    <LinkedInIcon height={32} />
                                 </div>
                                 <h6 className="font-semibold mt-4">Follow me</h6>
                                 <p className="mt-2">
