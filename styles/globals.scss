@@ -12,7 +12,7 @@ body {
 }
 
 :root {
-    --primary: 0 122 255;
+    --primary: 61 100 244;
     --greenish: 40 212 77;
     --purplish: 112 81 239;
     --orangish: 255 132 97;
@@ -44,7 +44,7 @@ body {
     }
 
     p {
-        @apply text-base md:text-lg lg:text-xl leading-relaxed tracking-wide text-gray-700;
+        @apply text-base md:text-lg lg:text-xl leading-relaxed md:leading-relaxed lg:leading-relaxed tracking-wide text-gray-700;
     }
 }
 

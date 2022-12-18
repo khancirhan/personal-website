@@ -7,6 +7,8 @@ import Head from 'next/head';
 import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { useCallback } from 'react';
+
 const Home = () => {
     const sliderOptions = {
         spaceBetween: 32,
@@ -41,8 +43,14 @@ const Home = () => {
 
             <Navbar />
 
-            <section className="min-h-screen pt-[68px]">
-                <div className="container">
+            <section
+                className="min-h-screen pt-[68px]"
+                style={{
+                    background:
+                        'radial-gradient(circle at top right, rgba(0,122,255,0.3996192226890757) 0%, rgba(28,136,255,0.20354079131652658) 25%, rgba(71,158,255,0) 50%, rgba(110,179,255,0.03547356442577032) 75%, rgba(0,122,255,0) 100%)',
+                }}
+            >
+                <div className="container relative">
                     <div className="pt-[16vh] md:pt-[20vh]">
                         <h1>
                             Hey! I’m Cirhan Yaqoob <div className="text-primary">Full Stack Developer</div>
@@ -218,8 +226,17 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="py-24 md:py-32 bg-primary">
-                <div className="container">
+            <section className="py-24 md:py-32 bg-primary relative overflow-hidden">
+                <div className="absolute top-0 right-0 flex items-center justify-center h-full md:right-80">
+                    {[10, 9, 8, 7, 6, 5, 4, 3, 2, 1].map((x, i, arr) => (
+                        <div
+                            key={x}
+                            className="absolute bg-primary shadow-lg rounded-full"
+                            style={{ width: x * 280, height: x * 280 }}
+                        ></div>
+                    ))}
+                </div>
+                <div className="container relative">
                     <div className="max-w-xl">
                         <h2 className="text-white">Let’s skyrocket your next project together</h2>
 
@@ -266,41 +283,41 @@ const Home = () => {
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12">
                         <div className="w-[300px]">
-                            <div className="flex flex-col items-center">
+                            <a href="tel:+919797790498" className="flex flex-col items-center">
                                 <div className="">
                                     <PhoneIcon height={32} />
                                 </div>
                                 <h6 className="font-semibold mt-4">Call me</h6>
-                                <p className="mt-2">
-                                    <a href="tel:+919797790498">+91-9797 790498</a>
-                                </p>
-                            </div>
+                                <p className="mt-2">+91-9797 790498</p>
+                            </a>
                         </div>
                         <div className="w-[300px]">
-                            <div className="flex flex-col items-center">
+                            <a
+                                target="_blank"
+                                href="mailto:khancirhan@gmail.com"
+                                rel="noreferrer"
+                                className="flex flex-col items-center"
+                            >
                                 <div>
                                     <MailIcon height={32} />
                                 </div>
                                 <h6 className="font-semibold mt-4">Mail me</h6>
-                                <p className="mt-2">
-                                    <a target="_blank" href="mailto:khancirhan@gmail.com" rel="noreferrer">
-                                        khancirhan@gmail.com
-                                    </a>
-                                </p>
-                            </div>
+                                <p className="mt-2">khancirhan@gmail.com</p>
+                            </a>
                         </div>
                         <div className="w-[300px]">
-                            <div className="flex flex-col items-center">
+                            <a
+                                target="_blank"
+                                href="https://www.linkedin.com/in/khancirhan"
+                                rel="noreferrer"
+                                className="flex flex-col items-center"
+                            >
                                 <div>
                                     <LinkedInIcon height={32} />
                                 </div>
                                 <h6 className="font-semibold mt-4">Follow me</h6>
-                                <p className="mt-2">
-                                    <a target="_blank" href="https://www.linkedin.com/in/khancirhan" rel="noreferrer">
-                                        linkedin.com/in/khancirhan
-                                    </a>
-                                </p>
-                            </div>
+                                <p className="mt-2">linkedin.com/in/khancirhan</p>
+                            </a>
                         </div>
                     </div>
 
