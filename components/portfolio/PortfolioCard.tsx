@@ -10,7 +10,7 @@ const PortfolioCard = () => {
                 alt=""
             />
 
-            <div className="px-7 py-7">
+            <div className="px-8 py-8">
                 <h5 className="font-bold text-white">Web Design</h5>
 
                 <p className="mt-2">Design</p>

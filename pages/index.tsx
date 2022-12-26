@@ -47,8 +47,8 @@ const Home = () => {
 
             <section className="min-h-screen pt-[68px]">
                 <div className="container relative">
-                    <div className="pt-[16vh] md:pt-[20vh] text-center">
-                        <h1 className="text-white text-center text-7xl leading-tight tracking-wide">
+                    <div className="pt-[10vh] md:pt-[22vh] text-center">
+                        <h1 className="text-white text-center text-5xl md:text-6xl lg:text-7xl font-bold leading-tight md:leading-tight lg:leading-tight">
                             Hey! I’m Cirhan Yaqoob <div className="text-gradient">Full Stack Developer</div>
                         </h1>
 
@@ -207,14 +207,17 @@ const Home = () => {
                         specialized in UI/UX, Branding and digital designs.
                     </p>
 
-                    <div className="grid grid-cols-3 gap-8 mt-10 md:mt-20">
-                        <div className="col-span-1">
+                    <div className="grid grid-cols-2 gap-8 mt-10 md:mt-20">
+                        <div className="col-span-2 lg:col-span-1">
                             <PortfolioCard />
                         </div>
-                        <div className="col-span-1">
+                        <div className="col-span-2 lg:col-span-1">
                             <PortfolioCard />
                         </div>
-                        <div className="col-span-1">
+                        <div className="col-span-2 lg:col-span-1">
+                            <PortfolioCard />
+                        </div>
+                        <div className="col-span-2 lg:col-span-1">
                             <PortfolioCard />
                         </div>
                     </div>
@@ -225,58 +228,24 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* <section className="py-24 md:py-32 bg-primary relative overflow-hidden">
-                <div className="absolute top-0 right-0 flex items-center justify-center h-full md:right-80">
-                    {[10, 9, 8, 7, 6, 5, 4, 3, 2, 1].map((x, i, arr) => (
-                        <div
-                            key={x}
-                            className="absolute bg-primary shadow-lg rounded-full"
-                            style={{ width: x * 280, height: x * 280 }}
-                        ></div>
-                    ))}
-                </div>
-                <div className="container relative">
-                    <div className="max-w-xl">
+            <section className="py-6 md:py-12">
+                <div className="container">
+                    <div
+                        className={
+                            'flex flex-col items-center text-center bg-darker px-9 py-12 md:px-14 md:py-20 rounded-xl ' +
+                            styles['contact-gradient']
+                        }
+                    >
                         <h2 className="text-white">Let’s skyrocket your next project together</h2>
 
-                        <p className="text-white mt-5">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis scelerisque purus eu quis
-                            lacus, nibh pharetra.
-                        </p>
-                    </div>
+                        <p className="text-white mt-6">Lorem ipsum dolor sit amet</p>
 
-                    <button className="bg-white text-primary btn-lg mt-12">Contact Me</button>
+                        <button className="bg-gradient text-white btn-lg mt-10">Contact Me</button>
+                    </div>
                 </div>
             </section>
 
-            <section className="pt-16 pb-20 md:pt-20 md:pb-24 overflow-hidden">
-                <div className="container">
-                    <div className="max-w-xl mx-auto">
-                        <h2 className="text-primary text-center">
-                            Technologies <br /> I&apos;ve worked with
-                        </h2>
-                    </div>
-
-                    <div className="mt-16">
-                        <Swiper spaceBetween={32} slidesPerView={'auto'} className="overflow-visible">
-                            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((row, i) => (
-                                <SwiperSlide key={i} className="!h-auto w-auto">
-                                    <div className="card rounded-3xl px-8 py-6 flex flex-col md:flex-row items-center gap-5">
-                                        <img
-                                            className="h-16"
-                                            src="https://api2.illuminz.com/uploads/firebase_2122446bec.png"
-                                            alt=""
-                                        />
-                                        <h6>Firebase</h6>
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </div>
-                </div>
-            </section> */}
-
-            <footer className="pt-12 pb-12 border-t border-gray-100">
+            <footer className="pt-12 pb-12 mt-10">
                 <div className="container">
                     <h2 className="text-center">Let’s Talk!</h2>
 
@@ -320,7 +289,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="border-b border-gray-100 mt-14"></div>
+                    <div className="border-b border-white/10 mt-14"></div>
 
                     <div className="text-center mt-12">All Rights Reserved Cirhan ©</div>
                 </div>
