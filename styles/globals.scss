@@ -2,17 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Raleway', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    @apply text-gray-900;
+    @apply text-gray-400 bg-dark;
 }
 
 :root {
-    --primary: 61 100 244;
+    --primary: 5 175 255;
     --greenish: 40 212 77;
     --purplish: 112 81 239;
     --orangish: 255 132 97;
@@ -44,7 +44,7 @@ body {
     }
 
     p {
-        @apply text-base md:text-lg lg:text-xl leading-relaxed md:leading-relaxed lg:leading-relaxed tracking-wide text-gray-700;
+        @apply text-base md:text-lg lg:text-xl leading-relaxed md:leading-relaxed lg:leading-relaxed tracking-wide;
     }
 }
 
@@ -58,7 +58,7 @@ body {
     }
 
     .card {
-        @apply bg-white rounded-[2rem];
+        @apply bg-darker rounded-xl;
     }
 
     .card-shadow {
@@ -71,19 +71,16 @@ body {
     }
 
     .btn-lg {
-        @apply text-base lg:text-lg font-semibold rounded-2xl px-10 py-3 lg:px-12 lg:py-4;
+        @apply text-base lg:text-lg font-medium rounded-full px-10 py-3 lg:px-12 lg:py-4;
     }
 
-    .text-gradient-primary {
-        background: linear-gradient(286.66deg, #2f3be7 10.19%, #2acbfe 108.25%);
+    .bg-gradient {
+        background: linear-gradient(95deg, #059dff 15%, #6549d5 45%, #e33fa1 75%, #fb5343) 95%/200% 100%;
+    }
+
+    .text-gradient {
+        @apply bg-gradient;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-    }
-
-    .vertical-orientation {
-        @apply whitespace-nowrap inline-flex items-center gap-4;
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
-        white-space: nowrap;
     }
 }

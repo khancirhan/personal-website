@@ -65,7 +65,7 @@ export default function Home() {
                         <div className="grid grid-cols-3 gap-8 mt-16">
                             <div className="col-span-1">
                                 <div className="card px-10 pt-12 pb-16 flex flex-col justify-center items-center text-center">
-                                    <div className="w-48 h-48 bg-orangish/10 rounded-4xl flex justify-center items-center"></div>
+                                    <div className="w-48 h-48 bg-orangish/10 rounded-xl flex justify-center items-center"></div>
 
                                     <h5 className="font-bold mt-10">Web Design</h5>
 
@@ -76,7 +76,7 @@ export default function Home() {
                             </div>
                             <div className="col-span-1">
                                 <div className="card px-10 pt-12 pb-16 flex flex-col justify-center items-center text-center">
-                                    <div className="w-48 h-48 bg-orangish/10 rounded-4xl flex justify-center items-center"></div>
+                                    <div className="w-48 h-48 bg-orangish/10 rounded-xl flex justify-center items-center"></div>
 
                                     <h5 className="font-bold mt-10">Web Development</h5>
 
@@ -87,7 +87,7 @@ export default function Home() {
                             </div>
                             <div className="col-span-1">
                                 <div className="card px-10 pt-12 pb-16 flex flex-col justify-center items-center text-center">
-                                    <div className="w-48 h-48 bg-orangish/10 rounded-4xl flex justify-center items-center"></div>
+                                    <div className="w-48 h-48 bg-orangish/10 rounded-xl flex justify-center items-center"></div>
 
                                     <h5 className="font-bold mt-10">System Design</h5>
 

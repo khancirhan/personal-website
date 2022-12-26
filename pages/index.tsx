@@ -4,10 +4,8 @@ import ServiceCard from 'components/services/ServiceCard';
 import Navbar from 'components/shared/Navbar';
 import { ArrowLeftIcon, ArrowRightIcon, GithubIcon, LinkedInIcon, MailIcon, PhoneIcon, WhatsappIcon } from 'icons';
 import Head from 'next/head';
-import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-import { useCallback } from 'react';
+import styles from 'styles/Index.module.scss';
 
 const Home = () => {
     const sliderOptions = {
@@ -43,25 +41,23 @@ const Home = () => {
 
             <Navbar />
 
-            <section
-                className="min-h-screen pt-[68px]"
-                style={{
-                    background:
-                        'radial-gradient(circle at top right, rgba(0,122,255,0.3996192226890757) 0%, rgba(28,136,255,0.20354079131652658) 25%, rgba(71,158,255,0) 50%, rgba(110,179,255,0.03547356442577032) 75%, rgba(0,122,255,0) 100%)',
-                }}
-            >
+            <div className={styles['gradient-left']}></div>
+
+            <div className={styles['gradient-right']}></div>
+
+            <section className="min-h-screen pt-[68px]">
                 <div className="container relative">
-                    <div className="pt-[16vh] md:pt-[20vh]">
-                        <h1>
-                            Hey! I’m Cirhan Yaqoob <div className="text-primary">Full Stack Developer</div>
+                    <div className="pt-[16vh] md:pt-[20vh] text-center">
+                        <h1 className="text-white text-center text-7xl leading-tight tracking-wide">
+                            Hey! I’m Cirhan Yaqoob <div className="text-gradient">Full Stack Developer</div>
                         </h1>
 
-                        <p className="max-w-xl mt-6">
+                        <p className="mx-auto max-w-3xl text-center mt-6">
                             Product Designer and Digital Creative Director working in design field for 13 years so far,
                             specialized in UI/UX, Branding and digital designs.
                         </p>
 
-                        <button className="btn-primary btn-lg mt-12">Say Hello!</button>
+                        <button className="btn-lg border border-white/20 text-white mt-16">Say Hello!</button>
                     </div>
                 </div>
             </section>
@@ -72,20 +68,20 @@ const Home = () => {
                         <div className="col-span-1">
                             <div className="relative flex">
                                 <img
-                                    className="relative top-12 left-0 w-[48%] lg:w-[60%] rounded-4xl aspect-[2/3] object-cover"
+                                    className="relative top-12 left-0 w-[48%] lg:w-[60%] rounded-xl aspect-[2/3] object-cover"
                                     src="https://images.unsplash.com/photo-1520583457224-aee11bad5112?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80"
                                     alt=""
                                 />
 
                                 <img
-                                    className="absolute -top-12 right-0 w-[48%] lg:w-[60%] rounded-4xl aspect-[2/3] object-cover"
+                                    className="absolute -top-12 right-0 w-[48%] lg:w-[60%] rounded-xl aspect-[2/3] object-cover"
                                     src="https://images.unsplash.com/photo-1665686306574-1ace09918530?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                                     alt=""
                                 />
                             </div>
                         </div>
                         <div className="col-span-1">
-                            <h2 className="text-primary">About Me</h2>
+                            <h2 className="text-gradient">About Me</h2>
 
                             <div className="mt-5">
                                 <p>
@@ -100,7 +96,7 @@ const Home = () => {
                             </div>
 
                             <div className="mt-12">
-                                <h6>You Can Find Me also Here:</h6>
+                                <h6>You can also find me here:</h6>
 
                                 <div className="flex items-center flex-wrap gap-8 mt-6">
                                     <a
@@ -132,7 +128,7 @@ const Home = () => {
                                         target="_blank"
                                         href="https://github.com/khancirhan"
                                         rel="noreferrer"
-                                        className="flex items-center gap-2 text-[#211f1f]"
+                                        className="flex items-center gap-2 text-gray-200"
                                     >
                                         <div>
                                             <GithubIcon width="32" />
@@ -151,7 +147,7 @@ const Home = () => {
                 <div className="container">
                     <div className="flex items-center justify-between">
                         <div>
-                            <h2 className="text-primary">My Expertise</h2>
+                            <h2 className="text-gradient">My Expertise</h2>
 
                             <p className="max-w-3xl mt-5">
                                 Product Designer and Digital Creative Director working in design field for 13 years so
@@ -162,13 +158,13 @@ const Home = () => {
                         <div className="hidden lg:flex items-center gap-8">
                             <button
                                 type="button"
-                                className="prev-btn w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
+                                className="prev-btn w-20 h-20 rounded-3xl bg-darker border border-white/10 text-white flex justify-center items-center disabled:opacity-60"
                             >
                                 <ArrowLeftIcon />
                             </button>
                             <button
                                 type="button"
-                                className="next-btn w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
+                                className="next-btn w-20 h-20 rounded-3xl bg-darker border border-white/10 text-white flex justify-center items-center disabled:opacity-60"
                             >
                                 <ArrowRightIcon />
                             </button>
@@ -187,13 +183,13 @@ const Home = () => {
                         <div className="flex lg:hidden items-center justify-center gap-8 mt-9">
                             <button
                                 type="button"
-                                className="prev-btn w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
+                                className="prev-btn w-20 h-20 rounded-3xl bg-white text-primary flex justify-center items-center disabled:opacity-60"
                             >
                                 <ArrowLeftIcon />
                             </button>
                             <button
                                 type="button"
-                                className="next-btn w-20 h-20 rounded-3xl card-shadow bg-white text-primary flex justify-center items-center disabled:opacity-60"
+                                className="next-btn w-20 h-20 rounded-3xl bg-white text-primary flex justify-center items-center disabled:opacity-60"
                             >
                                 <ArrowRightIcon />
                             </button>
@@ -204,14 +200,17 @@ const Home = () => {
 
             <section className="pt-16 pb-24 md:pt-32 md:pb-32">
                 <div className="container">
-                    <h2 className="text-primary">My Portfolio</h2>
+                    <h2 className="text-gradient text-center">My Portfolio</h2>
 
-                    <p className="max-w-3xl mt-5">
+                    <p className="max-w-3xl text-center mx-auto mt-5">
                         Product Designer and Digital Creative Director working in design field for 13 years so far,
                         specialized in UI/UX, Branding and digital designs.
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10 md:mt-16">
+                    <div className="grid grid-cols-3 gap-8 mt-10 md:mt-20">
+                        <div className="col-span-1">
+                            <PortfolioCard />
+                        </div>
                         <div className="col-span-1">
                             <PortfolioCard />
                         </div>
@@ -221,12 +220,12 @@ const Home = () => {
                     </div>
 
                     <div className="flex justify-center">
-                        <button className="btn-primary btn-lg mt-20">Browse All</button>
+                        <button className="bg-gradient text-white btn-lg mt-20">Browse All</button>
                     </div>
                 </div>
             </section>
 
-            <section className="py-24 md:py-32 bg-primary relative overflow-hidden">
+            {/* <section className="py-24 md:py-32 bg-primary relative overflow-hidden">
                 <div className="absolute top-0 right-0 flex items-center justify-center h-full md:right-80">
                     {[10, 9, 8, 7, 6, 5, 4, 3, 2, 1].map((x, i, arr) => (
                         <div
@@ -262,7 +261,7 @@ const Home = () => {
                         <Swiper spaceBetween={32} slidesPerView={'auto'} className="overflow-visible">
                             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((row, i) => (
                                 <SwiperSlide key={i} className="!h-auto w-auto">
-                                    <div className="card card-shadow rounded-3xl px-8 py-6 flex flex-col md:flex-row items-center gap-5">
+                                    <div className="card rounded-3xl px-8 py-6 flex flex-col md:flex-row items-center gap-5">
                                         <img
                                             className="h-16"
                                             src="https://api2.illuminz.com/uploads/firebase_2122446bec.png"
@@ -275,7 +274,7 @@ const Home = () => {
                         </Swiper>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             <footer className="pt-12 pb-12 border-t border-gray-100">
                 <div className="container">

@@ -1,42 +1,29 @@
-@mixin gradient-after($background-gradient) {
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        transition: all ease 1200ms;
-        opacity: 0;
-        z-index: -2;
-        background: $background-gradient;
-    }
-
-    &.active:after {
-        opacity: 1;
-    }
+.gradient-left {
+    position: fixed;
+    left: -250px;
+    top: 250px;
+    right: auto;
+    bottom: auto;
+    z-index: -1;
+    width: 500px;
+    height: 500px;
+    border-radius: 1000px;
+    background-image: linear-gradient(45deg, #059dff, #36c6f0);
+    opacity: 0.25;
+    filter: blur(100px);
 }
 
-.bluish-gradient {
-    @include gradient-after(
-        linear-gradient(0deg, rgb(var(--primary) / 1%), rgb(var(--primary) / 5%), rgb(var(--primary) / 10%))
-    );
-}
-
-.greenish-gradient {
-    @include gradient-after(
-        linear-gradient(0deg, rgb(var(--greenish) / 1%), rgb(var(--greenish) / 5%), rgb(var(--greenish) / 10%))
-    );
-}
-
-.purplish-gradient {
-    @include gradient-after(
-        linear-gradient(0deg, rgb(var(--purplish) / 1%), rgb(var(--purplish) / 5%), rgb(var(--purplish) / 10%))
-    );
-}
-
-.orangish-gradient {
-    @include gradient-after(
-        linear-gradient(0deg, rgb(var(--orangish) / 1%), rgb(var(--orangish) / 5%), rgb(var(--orangish) / 10%))
-    );
+.gradient-right {
+    position: fixed;
+    left: auto;
+    top: -250px;
+    right: -250px;
+    bottom: auto;
+    z-index: -1;
+    width: 500px;
+    height: 500px;
+    border-radius: 1000px;
+    background-image: linear-gradient(45deg, #fb5343, #6549d5);
+    opacity: 0.25;
+    filter: blur(100px);
 }
