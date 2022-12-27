@@ -31,6 +31,8 @@ const Home = () => {
         },
     };
 
+    const expYears = new Date().getFullYear() - 2019;
+
     return (
         <>
             <Head>
@@ -53,11 +55,13 @@ const Home = () => {
                         </h1>
 
                         <p className="mx-auto max-w-3xl text-center mt-6">
-                            Product Designer and Digital Creative Director working in design field for 13 years so far,
-                            specialized in UI/UX, Branding and digital designs.
+                            Senior Software Developer working in IT field for {expYears} years so far, specialized in
+                            Web Development, Database Design and Software Architecture.
                         </p>
 
-                        <button className="btn-lg border border-white/20 text-white mt-16">Say Hello!</button>
+                        <a className="inline-block btn-lg border border-white/20 text-white mt-16" href="#contact">
+                            Say Hello!
+                        </a>
                     </div>
                 </div>
             </section>
@@ -68,12 +72,14 @@ const Home = () => {
                         <div className="col-span-1">
                             <div className="relative flex">
                                 <img
+                                    crossOrigin="anonymous"
                                     className="relative top-12 left-0 w-[48%] lg:w-[60%] rounded-lg aspect-[2/3] object-cover"
-                                    src="https://images.unsplash.com/photo-1520583457224-aee11bad5112?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80"
+                                    src="https://images.unsplash.com/photo-1496996317594-95a0cf707af5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
                                     alt=""
                                 />
 
                                 <img
+                                    crossOrigin="anonymous"
                                     className="absolute -top-12 right-0 w-[48%] lg:w-[60%] rounded-lg aspect-[2/3] object-cover"
                                     src="https://images.unsplash.com/photo-1665686306574-1ace09918530?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                                     alt=""
@@ -85,18 +91,29 @@ const Home = () => {
 
                             <div className="mt-5">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis scelerisque purus eu
-                                    quis lacus, nibh pharetra.
+                                    Hi, I&apos;m Cirhan Yaqoob. I&apos;m a senior software developer with over{' '}
+                                    {expYears}+ years of experience in wide range of software disciplines. I transform
+                                    ideas into reality through technology.
                                 </p>
 
                                 <p className="mt-6">
-                                    Interdum vitae fames magna tristique massa. Quis tellus tempor, ut sed cursus. Mi
-                                    diam cursus interdum est egestas. In at sit tincidunt sed tort.
+                                    My skills and expertise in programming languages and tools allow me to create
+                                    software solutions that solve problems and add value. I enjoy my work as a software
+                                    developer and continue to stay up-to-date with new technologies and programming
+                                    languages.
                                 </p>
+
+                                {/* <p className="mt-6">
+                                    Fueled by high energy levels and boundless enthusiasm, I’m easily inspired and more
+                                    then willing to follow my fascinations wherever they take me. I’m passionate,
+                                    expressive, multi-talented spirit with a natural ability to entertain and inspire.
+                                    I’m never satisfied to just come up with ideas. Instead I have an almost impulsive
+                                    need to act on them.
+                                </p> */}
                             </div>
 
                             <div className="mt-12">
-                                <h6>You can also find me here:</h6>
+                                <h6>You can find me here:</h6>
 
                                 <div className="flex items-center flex-wrap gap-8 mt-6">
                                     <a
@@ -151,19 +168,79 @@ const Home = () => {
                                 <h2 className="text-gradient">My Expertise</h2>
 
                                 <p className="max-w-2xl mt-5">
-                                    Product Designer and Digital Creative Director working in design field for 13 years
-                                    so far, specialized in UI/UX, Branding and digital designs.
+                                    Leveraging the latest technologies to build cutting-edge applications.
                                 </p>
                             </div>
                         </div>
 
                         <div className="mt-10 md:mt-16">
                             <Swiper {...sliderOptions} className="overflow-visible">
-                                {[1, 2, 3, 4].map((row, i) => (
-                                    <SwiperSlide key={i} className="!h-auto">
-                                        <ServiceCard />
-                                    </SwiperSlide>
-                                ))}
+                                <SwiperSlide className="!h-auto">
+                                    <ServiceCard
+                                        icon={
+                                            <svg
+                                                stroke="#059dff"
+                                                fill="none"
+                                                strokeWidth="2"
+                                                viewBox="0 0 24 24"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                height="2.5rem"
+                                                width="2.5rem"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                                                <line x1="8" y1="2" x2="8" y2="18"></line>
+                                                <line x1="16" y1="6" x2="16" y2="22"></line>
+                                            </svg>
+                                        }
+                                        title="Web Development"
+                                        description="Clean, modern & responsive designs - optimized for performance, search engines, and converting users to customers."
+                                    />
+                                </SwiperSlide>
+                                <SwiperSlide className="!h-auto">
+                                    <ServiceCard
+                                        icon={
+                                            <svg
+                                                stroke="#fb5343"
+                                                fill="none"
+                                                strokeWidth="2"
+                                                viewBox="0 0 24 24"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                height="2.5rem"
+                                                width="2.5rem"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                            </svg>
+                                        }
+                                        title="Database Design"
+                                        description="Efficient and effective database design - allowing you to store, retrieve, and analyze data quickly and accurately."
+                                    />
+                                </SwiperSlide>
+
+                                <SwiperSlide className="!h-auto">
+                                    <ServiceCard
+                                        icon={
+                                            <svg
+                                                stroke="#6549d5"
+                                                fill="none"
+                                                strokeWidth="2"
+                                                viewBox="0 0 24 24"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                height="2.5rem"
+                                                width="2.5rem"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"></path>
+                                            </svg>
+                                        }
+                                        title="Software Architecture"
+                                        description="Identify & Analyze the high-level components  that will make up the system and identify common patterns and potential issues."
+                                    />
+                                </SwiperSlide>
                             </Swiper>
                         </div>
 
@@ -190,28 +267,43 @@ const Home = () => {
                     <h2 className="text-gradient text-center">My Portfolio</h2>
 
                     <p className="max-w-3xl text-center mx-auto mt-5">
-                        Product Designer and Digital Creative Director working in design field for 13 years so far,
-                        specialized in UI/UX, Branding and digital designs.
+                        Proven track record of delivering successful software projects.
                     </p>
 
                     <div className="grid grid-cols-2 gap-8 mt-10 md:mt-20">
                         <div className="col-span-2 lg:col-span-1">
-                            <PortfolioCard />
+                            <PortfolioCard
+                                image={'images/hbk.png'}
+                                title={'HarisaByKilo'}
+                                description={'Online Hairsa ordering website.'}
+                            />
                         </div>
                         <div className="col-span-2 lg:col-span-1">
-                            <PortfolioCard />
+                            <PortfolioCard
+                                image={'images/hizmet.png'}
+                                title={'Hizmet - Food Delivery'}
+                                description={'Online food ordering website.'}
+                            />
                         </div>
                         <div className="col-span-2 lg:col-span-1">
-                            <PortfolioCard />
+                            <PortfolioCard
+                                image={'images/ko2.png'}
+                                title={'KashmirO2'}
+                                description={'Non-profit initiative to bring medical Oxygen to people in need.'}
+                            />
                         </div>
                         <div className="col-span-2 lg:col-span-1">
-                            <PortfolioCard />
+                            <PortfolioCard
+                                image={'images/ruhh.png'}
+                                title={'Ruhh'}
+                                description={'RTT Consultation website.'}
+                            />
                         </div>
                     </div>
 
-                    <div className="flex justify-center">
+                    {/* <div className="flex justify-center">
                         <button className="bg-gradient text-black btn-lg mt-20 hover:brightness-110">Browse All</button>
-                    </div>
+                    </div> */}
                 </div>
             </section>
 
@@ -225,9 +317,16 @@ const Home = () => {
                     >
                         <h2 className="text-white">Let’s skyrocket your next project together</h2>
 
-                        <p className="text-white mt-6">Lorem ipsum dolor sit amet</p>
+                        <p className="text-white mt-6">
+                            Got a project you would like me to work on? Or how about just a friendly chat?
+                        </p>
 
-                        <button className="bg-gradient text-black btn-lg mt-10 hover:brightness-110">Contact Me</button>
+                        <a
+                            className="inline-block bg-gradient text-black btn-lg mt-10 hover:brightness-110"
+                            href="#contact"
+                        >
+                            Contact Me
+                        </a>
                     </div>
                 </div>
             </section>
