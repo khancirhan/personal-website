@@ -101,7 +101,7 @@ const Home = () => {
                                 <div className="flex items-center flex-wrap gap-8 mt-6">
                                     <a
                                         target="_blank"
-                                        href="https://api.whatsapp.com/send?phone=9797790498"
+                                        href="https://api.whatsapp.com/send?phone=+919797790498"
                                         rel="noreferrer"
                                         className="flex items-center gap-2 text-[#25d366]"
                                     >
