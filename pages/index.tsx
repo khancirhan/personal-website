@@ -56,7 +56,7 @@ const Home = () => {
 
                         <p className="mx-auto max-w-3xl text-center mt-6">
                             Senior Software Developer working in IT field for {expYears} years so far, specialized in
-                            Web Development, Database Design and Software Architecture.
+                            Web Development, Database Design and System Design.
                         </p>
 
                         <a className="inline-block btn-lg border border-white/20 text-white mt-16" href="#contact">
@@ -237,8 +237,8 @@ const Home = () => {
                                                 <path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"></path>
                                             </svg>
                                         }
-                                        title="Software Architecture"
-                                        description="Identify & Analyze the high-level components  that will make up the system and identify common patterns and potential issues."
+                                        title="System Design"
+                                        description="Identify & Analyze the high-level components that will make up the system and identify common patterns and potential issues."
                                     />
                                 </SwiperSlide>
                             </Swiper>
