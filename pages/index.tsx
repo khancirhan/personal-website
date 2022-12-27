@@ -45,9 +45,9 @@ const Home = () => {
 
             <div className={styles['gradient-right']}></div>
 
-            <section className="min-h-screen pt-[68px]">
+            <section id="home" className="min-h-screen pt-[68px]">
                 <div className="container relative">
-                    <div className="pt-[10vh] md:pt-[22vh] text-center">
+                    <div className="pt-[12vh] md:pt-[22vh] text-center">
                         <h1 className="text-white text-center text-5xl md:text-6xl lg:text-7xl font-bold leading-tight md:leading-tight lg:leading-tight">
                             Hey! I’m Cirhan Yaqoob <div className="text-gradient">Full Stack Developer</div>
                         </h1>
@@ -62,7 +62,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="py-16 md:py-40">
+            <section id="about" className="py-16 md:py-40">
                 <div className="container">
                     <div className="grid grid-cols-1 gap-24 lg:grid-cols-2">
                         <div className="col-span-1">
@@ -143,7 +143,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="py-16 md:py-32 overflow-hidden">
+            <section id="expertise" className="py-16 md:py-32 overflow-hidden">
                 <div className="container">
                     <div className="relative">
                         <div className="flex items-center justify-between">
@@ -185,7 +185,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="pt-16 pb-24 md:pt-32 md:pb-32">
+            <section id="portfolio" className="pt-16 pb-24 md:pt-32 md:pb-32">
                 <div className="container">
                     <h2 className="text-gradient text-center">My Portfolio</h2>
 
@@ -210,7 +210,7 @@ const Home = () => {
                     </div>
 
                     <div className="flex justify-center">
-                        <button className="bg-gradient text-white btn-lg mt-20">Browse All</button>
+                        <button className="bg-gradient text-black btn-lg mt-20 hover:brightness-110">Browse All</button>
                     </div>
                 </div>
             </section>
@@ -227,12 +227,12 @@ const Home = () => {
 
                         <p className="text-white mt-6">Lorem ipsum dolor sit amet</p>
 
-                        <button className="bg-gradient text-white btn-lg mt-10">Contact Me</button>
+                        <button className="bg-gradient text-black btn-lg mt-10 hover:brightness-110">Contact Me</button>
                     </div>
                 </div>
             </section>
 
-            <footer className="pt-12 pb-12 mt-10">
+            <footer id="contact" className="pt-12 pb-12 mt-10">
                 <div className="container">
                     <h2 className="text-center">Let’s Talk!</h2>
 
