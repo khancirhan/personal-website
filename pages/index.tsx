@@ -68,13 +68,13 @@ const Home = () => {
                         <div className="col-span-1">
                             <div className="relative flex">
                                 <img
-                                    className="relative top-12 left-0 w-[48%] lg:w-[60%] rounded-xl aspect-[2/3] object-cover"
+                                    className="relative top-12 left-0 w-[48%] lg:w-[60%] rounded-lg aspect-[2/3] object-cover"
                                     src="https://images.unsplash.com/photo-1520583457224-aee11bad5112?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80"
                                     alt=""
                                 />
 
                                 <img
-                                    className="absolute -top-12 right-0 w-[48%] lg:w-[60%] rounded-xl aspect-[2/3] object-cover"
+                                    className="absolute -top-12 right-0 w-[48%] lg:w-[60%] rounded-lg aspect-[2/3] object-cover"
                                     src="https://images.unsplash.com/photo-1665686306574-1ace09918530?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
                                     alt=""
                                 />
@@ -145,51 +145,38 @@ const Home = () => {
 
             <section className="py-16 md:py-32 overflow-hidden">
                 <div className="container">
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <h2 className="text-gradient">My Expertise</h2>
+                    <div className="relative">
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <h2 className="text-gradient">My Expertise</h2>
 
-                            <p className="max-w-3xl mt-5">
-                                Product Designer and Digital Creative Director working in design field for 13 years so
-                                far, specialized in UI/UX, Branding and digital designs.
-                            </p>
+                                <p className="max-w-2xl mt-5">
+                                    Product Designer and Digital Creative Director working in design field for 13 years
+                                    so far, specialized in UI/UX, Branding and digital designs.
+                                </p>
+                            </div>
                         </div>
 
-                        <div className="hidden lg:flex items-center gap-8">
+                        <div className="mt-10 md:mt-16">
+                            <Swiper {...sliderOptions} className="overflow-visible">
+                                {[1, 2, 3, 4].map((row, i) => (
+                                    <SwiperSlide key={i} className="!h-auto">
+                                        <ServiceCard />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+
+                        <div className="flex items-center justify-center gap-8 mt-8 lg:absolute lg:top-0 lg:right-0 lg:mt-0">
                             <button
                                 type="button"
-                                className="prev-btn w-20 h-20 rounded-3xl bg-darker border border-white/10 text-white flex justify-center items-center disabled:opacity-60"
+                                className="prev-btn w-20 h-20 rounded-3xl bg-darker border border-white/10 text-white flex justify-center items-center disabled:text-gray-500"
                             >
                                 <ArrowLeftIcon />
                             </button>
                             <button
                                 type="button"
-                                className="next-btn w-20 h-20 rounded-3xl bg-darker border border-white/10 text-white flex justify-center items-center disabled:opacity-60"
-                            >
-                                <ArrowRightIcon />
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="mt-10 md:mt-16">
-                        <Swiper {...sliderOptions} className="overflow-visible">
-                            {[1, 2, 3, 4].map((row, i) => (
-                                <SwiperSlide key={i} className="!h-auto">
-                                    <ServiceCard />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-
-                        <div className="flex lg:hidden items-center justify-center gap-8 mt-9">
-                            <button
-                                type="button"
-                                className="prev-btn w-20 h-20 rounded-3xl bg-white text-primary flex justify-center items-center disabled:opacity-60"
-                            >
-                                <ArrowLeftIcon />
-                            </button>
-                            <button
-                                type="button"
-                                className="next-btn w-20 h-20 rounded-3xl bg-white text-primary flex justify-center items-center disabled:opacity-60"
+                                className="next-btn w-20 h-20 rounded-3xl bg-darker border border-white/10 text-white flex justify-center items-center disabled:text-gray-500"
                             >
                                 <ArrowRightIcon />
                             </button>

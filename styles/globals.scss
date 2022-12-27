@@ -76,6 +76,11 @@ body {
 
     .bg-gradient {
         background: linear-gradient(95deg, #059dff 15%, #6549d5 45%, #e33fa1 75%, #fb5343) 95%/200% 100%;
+        transition: filter 0.3s ease;
+
+        &:hover {
+            filter: brightness(115%);
+        }
     }
 
     .text-gradient {
