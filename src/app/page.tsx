@@ -44,9 +44,8 @@ const HeroSection: FC<HeroSectionProps> = (props) => {
 
                     <div className="mx-auto max-w-2xl mt-6">
                         <p>
-                            Hi, I&apos;m Cirhan Yaqoob. I&apos;m a senior software developer with over{' '}
-                            {props.experienceInYears}+ years of experience in wide range of software disciplines. I
-                            transform ideas into reality through technology.
+                            I&apos;m a senior software engineer with over {props.experienceInYears}+ years of experience
+                            in wide range of software disciplines. I transform ideas into reality through technology.
                         </p>
                     </div>
 
@@ -93,15 +92,17 @@ const AboutSection: FC<AboutSectionProps> = (props) => {
 
                         <div className="mt-5">
                             <p>
-                                Hi, I&apos;m Cirhan Yaqoob. I&apos;m a senior software developer with over{' '}
-                                {props.experienceInYears}+ years of experience in wide range of software disciplines. I
-                                transform ideas into reality through technology.
+                                Hi, I&apos;m Cirhan Yaqoob. I&apos;m a software engineer with over{' '}
+                                {props.experienceInYears}+ years of experience in a wide range of software disciplines.
+                                I love to code and design software systems, and I have a particular affinity for
+                                frontend development and attention to detail.
                             </p>
 
                             <p className="mt-6">
-                                My skills and expertise in programming languages and tools allow me to create software
-                                solutions that solve problems and add value. I enjoy my work as a software developer and
-                                continue to stay up-to-date with new technologies and programming languages.
+                                I started my journey with the powerful combo of Spring Boot and Angular, and after a
+                                while, I transitioned to React.js and Node.js. So, yeah, I currently work as a MERN
+                                stack developer. I love what I do and make sure to stay updated with the latest in tech
+                                and programming languages.
                             </p>
                         </div>
 
