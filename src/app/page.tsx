@@ -42,10 +42,12 @@ const HeroSection: FC<HeroSectionProps> = (props) => {
                         Hey! I’m Cirhan Yaqoob <div className="text-primary">Full Stack Developer</div>
                     </h1>
 
-                    <div className="mx-auto max-w-2xl mt-6">
+                    <div className="mx-auto max-w-3xl mt-6">
                         <p>
                             I&apos;m a senior software engineer with over {props.experienceInYears}+ years of experience
-                            in wide range of software disciplines. I transform ideas into reality through technology.
+                            in wide range of software disciplines. I transform ideas into reality through technology. If
+                            you need someone to sprinkle some coding magic on your project, I&apos;m your guy.
+                            Let&apos;s team up and make some tech dreams a reality!
                         </p>
                     </div>
 
