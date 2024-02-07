@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { FC } from 'react';
-import ResumeHeader from './_components/ResumeHeader';
-import ResumeBody from './_components/ResumeBody';
+import ResumeHeader from '@/components/resume/ResumeHeader';
+import ResumeBody from '@/components/resume/ResumeBody';
 
 const data = {
     name: 'Cirhan Yaqoob',
