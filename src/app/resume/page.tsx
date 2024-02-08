@@ -2,25 +2,18 @@
 import { FC } from 'react';
 import ResumeHeader from '@/components/resume/ResumeHeader';
 import ResumeBody from '@/components/resume/ResumeBody';
+import { Metadata, Viewport } from 'next';
 
 const data = {
     name: 'Cirhan Yaqoob',
     designation: 'Sr. Product Developer at Codeus',
     contact: {
         email: 'khancirhan@gmail.com',
-        phone: '+91-9797790498',
+        phone: '+91 9797790498',
         address: 'Srinagar, Jammu & Kashmir',
         linkedIn: 'linkedin.com/in/khancirhan/',
     },
-    about: `My Name Is Henry Watson lorem empus id fringilla molestie ornare
-    diam in olestie ipsum etium rosn
-    ollicitudin est, porttitor amet hitmas-
-    sa Done cporttitor dolor shit dolor
-    kiren lorem nisl molestie pretium
-    etfring. is the shitp lorem ipcum
-    retiumci amet is tudinest.moles tium
-    lorem olestie pretium apaza all the
-    rosen. fringilla lorem ipsum.`,
+    about: `Highly motivated senior software engineer with over 4 years of experience specializing in the MERN stack. I have created a wide range of applications with best design practices and optimal performance.`,
     skills: [
         { title: 'Languages', values: ['Javascript', 'Java', 'Python', 'PHP', 'HTML 5', 'CSS 3'] },
         {
@@ -44,7 +37,7 @@ const data = {
         },
         {
             title: 'Other',
-            values: ['REST APIs', 'Microservices', 'Socket.io'],
+            values: ['REST APIs', 'Microservices', 'Socket.io', 'UI/UX'],
         },
     ],
     experiences: [
@@ -53,61 +46,82 @@ const data = {
             company: 'Codeus IT Solutions Pvt Ltd',
             timeFrame: '11/2020 - Present',
             imageUrl: '/logos/codeus-logo.svg',
-            achievements: ['Rewrote existing software using latest technologies and best practices.'],
+            achievements: [
+                'Successfully migrated the existing web application architecture to an API-based architecture and Single Page Application (SPA)',
+                'Assumed full responsibility for project leadership in frontend development and support.',
+                'Managed all frontend tasks, including creating reusable components, organizing project structure and layout, optimizing performance, and delivering pixel-perfect dashboards.',
+                'Implemented a library system to ensure UI consistency and facilitate the use of components.',
+                'Contributed to software database and system design, enhancing overall project effectiveness.',
+                'Additionally, led numerous other impactful initiatives.',
+            ],
         },
         {
             title: 'Full Stack Web Developer',
             company: 'Freelancing',
-            timeFrame: '04/2020 - 10/2020',
+            timeFrame: '04/2020 - Present',
             imageUrl: '/logos/codecrafts-logo.svg',
             achievements: [
-                'Developed order-processing module that interfaces with Ebay’s Order and Shipment APIs.',
-                'Created product-catalog module for adding and listing all products.',
-                'Designed RESTful APIs using spring-boot and built frontend interface using angular.',
+                'Co-founded CodeCrafts, an IT company offering comprehensive IT services with my friend.',
+                'Developed and oversaw management of the Hizmet Food delivery platform.',
+                'Developed KashmirO2 during the COVID-19 pandemic in response to challenges finding oxygen concentrators.',
+                'Designed the Speedolearn website using Figma.',
+                "Created an order-processing module integrating with Ebay's Order and Shipment APIs using Spring Boot.",
             ],
         },
-        // {
-        //     title: 'Intern',
-        //     company: 'Grey Delta',
-        //     timeFrame: '06/2019 - 12/2019',
-        //     achievements: ['Worked on an inventory management project for a seller'],
-        // },
     ],
     educations: [
         {
             degree: 'Bachelor of Engineering in Computer Science',
             school: 'University of Kashmir, Hazratbal, Srinagar',
             timeFrame: '2015 - 2019',
-            // grade: '8.1 GPA',
             imageUrl: '/logos/university-of-kashmir-logo.png',
         },
-        // {
-        //     degree: 'Higher Secondary from JKBOSE',
-        //     school: 'SP College, Srinagar',
-        //     timeFrame: '2012 - 2014',
-        //     grade: '90.2%',
-        // },
     ],
     projects: [
         {
             title: 'ProgressCenter',
-            descriptionList: ['A sophisticated API for image stitching and processing.'],
+            descriptionList: [
+                'ProgessCenter is an advanced system designed for documenting and monitoring construction site progress. ',
+                'It provides real-time access to ongoing work, allowing users to remotely track and share updates across all projects from a single platform',
+                'The platform is actively used by industry leaders such as Emaar, Neom, Nakheel, and JLL',
+            ],
             link: '',
         },
         {
             title: 'Quantam API & Dashboard',
-            descriptionList: ['A sophisticated API for image stitching and processing.'],
+            descriptionList: [
+                'Quantam API & Dashboard streamlines camera unit management and firmware updates.',
+                'The Quantam Dashboard empowers users to effortlessly manage camera units, adjust settings, change schedule, and handle billing.',
+                'The API facilitates firmware connectivity, enabling seamless image and log uploads, as well as version updates.',
+            ],
             link: '',
         },
         {
             title: 'HarisaByKilo',
-            descriptionList: [],
+            descriptionList: [
+                "HarisaByKilo is an intuitive online platform facilitating the seamless ordering of Kashmir's delicacy, Harisa, directly to your doorstep in just five simple steps.",
+            ],
             link: 'https://harisabykilo.com',
         },
         {
+            title: 'Hizmet Food Delivery',
+            descriptionList: [
+                'Hizmet Food Delivery offered online ordering from 200+ restaurants, making it easy to get your favorite meals delivered.',
+            ],
+        },
+        {
             title: 'KashmirO2',
-            descriptionList: [],
+            descriptionList: [
+                'KashmirO2 was a non-profit initiative launched during the COVID-19 pandemic to provide essential medical oxygen to those in need.',
+            ],
             link: 'https://kashmiro2.com',
+        },
+        {
+            title: 'Ruhh',
+            descriptionList: [
+                'Ruhh is an RTT consultation website where users can easily book one-on-one sessions with RTT therapist.',
+            ],
+            link: 'https://ruhh.org',
         },
     ],
 };
@@ -122,7 +136,13 @@ const HeaderSection: FC<HeaderSectionProps> = () => {
         <header>
             <div className="flex items-center justify-between gap-8">
                 <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-full bg-gray-100"></div>
+                    <div>
+                        <img
+                            className="w-16 h-16 object-cover object-center rounded-full"
+                            src="/images/resume-dp.jpeg"
+                            alt=""
+                        />
+                    </div>
 
                     <div>
                         <h1 className="text-xl font-bold">{data.name}</h1>
@@ -146,7 +166,7 @@ const SocialSection: FC<SocialSectionProps> = () => {
                 <div className="flex justify-between items-center gap-4">
                     <a
                         className="flex items-center gap-2 text-gray-600 text-xs"
-                        href={'https://' + data.contact.email}
+                        href={'mailto:' + data.contact.email}
                         target="_blank"
                         rel="noreferrer"
                     >
@@ -167,7 +187,7 @@ const SocialSection: FC<SocialSectionProps> = () => {
 
                     <a
                         className="flex items-center gap-2 text-gray-600 text-xs"
-                        href={'https://' + data.contact.phone}
+                        href={'tel:' + data.contact.phone.replace(/\s+/g, '')}
                         target="_blank"
                         rel="noreferrer"
                     >
@@ -362,9 +382,6 @@ const ProjectsSection: FC<ProjectsSectionProps> = () => {
                     <div key={i} className="">
                         <div>
                             <div className="font-semibold">{row.title}</div>
-                            <div className="flex items-center justify-between gap-2">
-                                <div className="text-sm font-medium">Angular, Nodejs</div>
-                            </div>
                         </div>
 
                         {row.descriptionList.length > 0 && (
@@ -396,6 +413,17 @@ const ProjectsSection: FC<ProjectsSectionProps> = () => {
 /* =================================================================================================
  * ResumePage
  * ===============================================================================================*/
+
+export const metadata: Metadata = {
+    title: 'Cirhan Yaqoob - Resume',
+    description:
+        'Highly motivated senior software engineer with over 4 years of experience specializing in the MERN stack. I have created a wide range of applications with best design practices and optimal performance.',
+};
+
+export const viewport: Viewport = {
+    initialScale: 1,
+    width: 900,
+};
 
 const ResumePage = () => {
     return (

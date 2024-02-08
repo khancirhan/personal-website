@@ -7,6 +7,48 @@ import styles from '@/styles/Home.module.scss';
 import { FC } from 'react';
 
 /* =================================================================================================
+ * Projects
+ * ===============================================================================================*/
+
+const projects = [
+    {
+        title: 'HarisaByKilo',
+        description:
+            "HarisaByKilo is an intuitive online platform facilitating the seamless ordering of Kashmir's delicacy, Harisa, directly to your doorstep in just five simple steps.",
+        imageUrl: '/images/harisabykilo.png',
+        rgbColor: '111 35 37',
+    },
+    {
+        title: 'Hizmet Food Delivery',
+        description:
+            'Hizmet Food Delivery offered online ordering from 200+ restaurants, making it easy to get your favorite meals delivered.',
+        imageUrl: '/images/hizmet.png',
+        rgbColor: '223 118 84',
+    },
+    {
+        title: 'KashmirO2',
+        description:
+            'KashmirO2 was a non-profit initiative launched during the COVID-19 pandemic to provide essential medical oxygen to those in need.',
+        imageUrl: '/images/kashmiro2.png',
+        rgbColor: '72 106 178',
+    },
+    {
+        title: 'Ruhh',
+        description:
+            'Ruhh is an RTT consultation website where users can easily book one-on-one sessions with RTT therapist.',
+        imageUrl: '/images/ruhh.png',
+        rgbColor: '224 31 84',
+    },
+    {
+        title: 'Speedolearn',
+        description:
+            'Speedolearn is an e-learning platform where users can explore a wide range of courses tailored to their interests and needs.',
+        imageUrl: '/images/speedolearn.png',
+        rgbColor: '99 102 241',
+    },
+];
+
+/* =================================================================================================
  * FixedOverlayGradient
  * ===============================================================================================*/
 
@@ -101,10 +143,10 @@ const AboutSection: FC<AboutSectionProps> = (props) => {
                             </p>
 
                             <p className="mt-6">
-                                I started my journey with the powerful combo of Spring Boot and Angular, and after a
-                                while, I transitioned to React.js and Node.js. So, yeah, I currently work as a MERN
-                                stack developer. I love what I do and make sure to stay updated with the latest in tech
-                                and programming languages.
+                                I started my journey with the powerful combo of Spring Boot and Angular. As time
+                                progressed, I transitioned to the React.js and Node.js ecosystem, solidifying my role as
+                                a proficient MERN stack developer. I love what I do and make sure to stay updated with
+                                the latest in tech and programming languages.
                             </p>
                         </div>
 
@@ -200,7 +242,7 @@ const ExpertiseSection: FC<ExpertiseSectionProps> = () => {
                                         </svg>
                                     }
                                     title="Web Development"
-                                    description="Clean, modern & responsive designs - optimized for performance, search engines, and converting users to customers."
+                                    description="I am proficient in web development with a passion for creating responsive and visually appealing websites. I've crafted dozens of high-quality sites, prioritizing the best user experience through clean and efficient code."
                                 />
                             </div>
 
@@ -222,7 +264,7 @@ const ExpertiseSection: FC<ExpertiseSectionProps> = () => {
                                         </svg>
                                     }
                                     title="Database Design"
-                                    description="Efficient and effective database design - allowing you to store, retrieve, and analyze data quickly and accurately."
+                                    description="I am skilled in database design, driven by a commitment to efficiency and effectiveness. With a track record of creating optimized databases, I ensure seamless data storage, retrieval, and analysis, facilitating quick and accurate operations."
                                 />
                             </div>
                             <div className="col-span-3 lg:col-span-1">
@@ -243,7 +285,7 @@ const ExpertiseSection: FC<ExpertiseSectionProps> = () => {
                                         </svg>
                                     }
                                     title="System Design"
-                                    description="Identify & Analyze the high-level components that will make up the system and identify common patterns and potential issues."
+                                    description="Proficient in system design, I specialize in identifying and analyzing high-level components crucial for system architecture. I adeptly recognize common patterns and potential issues, ensuring comprehensive analysis and optimal design"
                                 />
                             </div>
                         </div>
@@ -270,34 +312,16 @@ const PortfolioSection: FC<PortfolioSectionProps> = () => {
                 </p>
 
                 <div className="grid grid-cols-2 gap-8 mt-10 md:mt-20">
-                    <div className="col-span-2 lg:col-span-1">
-                        <PortfolioCard
-                            image={'images/hbk.png'}
-                            title={'HarisaByKilo'}
-                            description={'Online Hairsa ordering website.'}
-                        />
-                    </div>
-                    <div className="col-span-2 lg:col-span-1">
-                        <PortfolioCard
-                            image={'images/hizmet.png'}
-                            title={'Hizmet - Food Delivery'}
-                            description={'Online food ordering website.'}
-                        />
-                    </div>
-                    <div className="col-span-2 lg:col-span-1">
-                        <PortfolioCard
-                            image={'images/ko2.png'}
-                            title={'KashmirO2'}
-                            description={'Non-profit initiative to bring medical Oxygen to people in need.'}
-                        />
-                    </div>
-                    <div className="col-span-2 lg:col-span-1">
-                        <PortfolioCard
-                            image={'images/ruhh.png'}
-                            title={'Ruhh'}
-                            description={'RTT Consultation website.'}
-                        />
-                    </div>
+                    {projects.map((row, i) => (
+                        <div key={i} className="col-span-2 lg:col-span-1">
+                            <PortfolioCard
+                                title={row.title}
+                                description={row.description}
+                                imageUrl={row.imageUrl}
+                                rgbColor={row.rgbColor}
+                            />
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
@@ -398,7 +422,7 @@ const FooterSection: FC<FooterSectionProps> = () => {
  * ===============================================================================================*/
 
 const HomePage = () => {
-    const experienceInYears = new Date().getFullYear() - 2019;
+    const experienceInYears = new Date().getFullYear() - 2020;
 
     return (
         <>

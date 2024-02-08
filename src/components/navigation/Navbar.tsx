@@ -42,23 +42,6 @@ const useShrinkOnScroll = (scrollheight: number) => {
     return hasScrolledpast;
 };
 
-// interface HamburgerMenuProps {
-//     isOpen: boolean;
-//     toggleOpen: () => void;
-// }
-// const HamburgerMenu: FC<HamburgerMenuProps> = (props) => {
-//     const { isOpen, toggleOpen } = props;
-
-//     return (
-//         <div className={[styles['hamburger-menu'], isOpen ? styles['open'] : ''].join(' ')} onClick={toggleOpen}>
-//             <span></span>
-//             <span></span>
-//             <span></span>
-//             <span></span>
-//         </div>
-//     );
-// };
-
 /* -------------------------------------------------------------------------------------------------
  * MobileNav
  * -----------------------------------------------------------------------------------------------*/
@@ -75,7 +58,7 @@ const MobileNav: FC<MobileNavProps> = (props) => {
         <>
             <div className="flex lg:hidden justify-between items-center h-full">
                 <Link href="/">
-                    <img className="h-9" src="/logo.svg" alt="" />
+                    <img className="h-8" src="/logo.svg" alt="" />
                 </Link>
 
                 <button onClick={() => setShow(true)}>
@@ -96,7 +79,7 @@ const MobileNav: FC<MobileNavProps> = (props) => {
             >
                 <div className="container h-full py-6">
                     <div className="flex items-center justify-between">
-                        <img className="h-10" src="/logo.svg" alt="" />
+                        <img className="h-8" src="/logo.svg" alt="" />
 
                         <button onClick={() => setShow(false)}>
                             <div className="flex flex-col items-center justify-center gap-2 h-5 ">
@@ -137,7 +120,7 @@ const DesktopNav: FC<DesktopNavProps> = (props) => {
     return (
         <div className="hidden lg:flex justify-between items-center h-full">
             <Link href="/">
-                <img className="h-10" src="/logo.svg" alt="" />
+                <img className="h-9" src="/logo.svg" alt="" />
             </Link>
 
             <ul className="flex items-center gap-6">
