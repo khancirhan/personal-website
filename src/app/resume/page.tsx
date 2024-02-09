@@ -26,8 +26,6 @@ const data = {
                 'Bootstap',
                 'Tailwind CSS',
                 'JQuery',
-                'Flask',
-                'Django',
                 'Spring Boot',
             ],
         },
