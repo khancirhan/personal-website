@@ -425,8 +425,8 @@ export const viewport: Viewport = {
 
 const ResumePage = () => {
     return (
-        <div className="bg-white p-6">
-            <main className="text-gray-800 bg-white mx-auto p-10 w-[792px] min-h-[1122px] shadow-[0_2px_10px_rgba(0,0,0,0.075),0_-2px_10px_rgba(0,0,0,0.075)]">
+        <div className="bg-white p-6 print:p-0">
+            <main className="text-gray-800 bg-white mx-auto p-10 w-[792px] min-h-[1122px] shadow-[0_2px_10px_rgba(0,0,0,0.075),0_-2px_10px_rgba(0,0,0,0.075)] print:w-auto print:shadow-none">
                 <HeaderSection />
 
                 <div className="mt-6">
