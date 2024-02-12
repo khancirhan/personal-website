@@ -12,6 +12,7 @@ const data = {
         phone: '+91 9797790498',
         address: 'Srinagar, Jammu & Kashmir',
         linkedIn: 'linkedin.com/in/khancirhan/',
+        website: 'khancirhan.vercel.app',
     },
     about: `Highly motivated senior software engineer with over 4 years of experience specializing in the MERN stack. I have created a wide range of applications with best design practices and optimal performance.`,
     skills: [
@@ -54,16 +55,15 @@ const data = {
             ],
         },
         {
-            title: 'Full Stack Web Developer',
-            company: 'Freelancing',
-            timeFrame: '04/2020 - Present',
-            imageUrl: '/logos/codecrafts-logo.svg',
+            title: 'Junior Java Developer',
+            company: 'EMSON - UK LTD',
+            timeFrame: '05/2020 - 08/2020',
+            imageUrl: '',
             achievements: [
-                'Co-founded CodeCrafts, an IT company offering comprehensive IT services with my friend.',
-                'Developed and oversaw management of the Hizmet Food delivery platform.',
-                'Developed KashmirO2 during the COVID-19 pandemic in response to challenges finding oxygen concentrators.',
-                'Designed the Speedolearn website using Figma.',
-                "Created an order-processing module integrating with Ebay's Order and Shipment APIs using Spring Boot.",
+                'Worked on Inventory Management System that streamlines order processing and shipment from various platforms such as Ebay and Amazon.',
+                "Created an order-processing module that integrates with Ebay's Order and Shipment APIs.",
+                'Created a product catalog module for adding and listing all products.',
+                'Developed the frontend in Angular for product listing.',
             ],
         },
     ],
@@ -206,23 +206,23 @@ const SocialSection: FC<SocialSectionProps> = () => {
 
                     <a
                         className="flex items-center gap-2 text-gray-600 text-xs"
-                        href={'https://' + data.contact.linkedIn}
+                        href={'https://' + data.contact.website}
                         target="_blank"
                         rel="noreferrer"
                     >
                         <svg
                             className="text-gray-500"
                             xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 448 512"
+                            viewBox="0 0 512 512"
                             height={14}
                         >
                             <path
                                 fill="currentColor"
-                                d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"
+                                d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.4c2.2 20.4 3.3 41.8 3.3 64zm28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7zm-209 0H18.6c30-74.1 93.6-130.9 172-151.6-25.5 34.2-45.3 87.7-55.3 151.6zM8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zm186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6-78.4-20.7-142-77.5-172-151.6h116.7zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.6z"
                             />
                         </svg>
 
-                        {data.contact.linkedIn}
+                        {data.contact.website}
                     </a>
                 </div>
             </div>
@@ -259,7 +259,11 @@ const ExperienceSection: FC<ExperienceSectionProps> = () => {
                         <div className="flex items-center gap-4">
                             <div>
                                 <div className="grid place-items-center w-10 h-10 border border-gray-100 rounded-full p-[6px]">
-                                    <img className="object-contain" src={row.imageUrl} alt="" />
+                                    {row.imageUrl ? (
+                                        <img className="object-contain" src={row.imageUrl} alt="" />
+                                    ) : (
+                                        <div className="font-semibold">{row.company[0]}</div>
+                                    )}
                                 </div>
                             </div>
                             <div>
