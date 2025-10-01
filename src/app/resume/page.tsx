@@ -3,6 +3,7 @@ import { FC } from 'react';
 import ResumeHeader from '@/components/resume/ResumeHeader';
 import ResumeBody from '@/components/resume/ResumeBody';
 import { Metadata, Viewport } from 'next';
+import ResumePdf from '@/components/resume/ResumePdf';
 
 const data = {
     name: 'Cirhan Yaqoob',
@@ -422,42 +423,41 @@ export const metadata: Metadata = {
         'Highly motivated senior software engineer with over 4 years of experience specializing in the MERN stack. I have created a wide range of applications with best design practices and optimal performance.',
 };
 
-export const viewport: Viewport = {
-    initialScale: 1,
-    width: 900,
-};
-
 const ResumePage = () => {
     return (
-        <div className="bg-white p-6 print:p-0">
-            <main className="text-gray-800 bg-white mx-auto p-10 w-[792px] min-h-[1122px] shadow-[0_2px_10px_rgba(0,0,0,0.075),0_-2px_10px_rgba(0,0,0,0.075)] print:w-auto print:shadow-none">
-                <HeaderSection />
+        <>
+            {/* <ResumePdf /> */}
 
-                <div className="mt-6">
-                    <SocialSection />
-                </div>
+            <div className="bg-white p-6 print:p-0">
+                <main className="text-gray-800 bg-white mx-auto p-10 w-[792px] min-h-[1122px] shadow-[0_2px_10px_rgba(0,0,0,0.075),0_-2px_10px_rgba(0,0,0,0.075)] print:w-auto print:shadow-none">
+                    <HeaderSection />
 
-                <div className="mt-5">
-                    <DescriptionSection />
-                </div>
+                    <div className="mt-6">
+                        <SocialSection />
+                    </div>
 
-                <div className="mt-8">
-                    <ExperienceSection />
-                </div>
+                    <div className="mt-5">
+                        <DescriptionSection />
+                    </div>
 
-                <div className="mt-9">
-                    <EducationSection />
-                </div>
+                    <div className="mt-8">
+                        <ExperienceSection />
+                    </div>
 
-                <div className="mt-9">
-                    <SkillsSection />
-                </div>
+                    <div className="mt-9">
+                        <EducationSection />
+                    </div>
 
-                <div className="mt-9">
-                    <ProjectsSection />
-                </div>
-            </main>
-        </div>
+                    <div className="mt-9">
+                        <SkillsSection />
+                    </div>
+
+                    <div className="mt-9">
+                        <ProjectsSection />
+                    </div>
+                </main>
+            </div>
+        </>
     );
 };
 

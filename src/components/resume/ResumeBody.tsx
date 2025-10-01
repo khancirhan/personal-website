@@ -8,7 +8,7 @@ const ResumeBody: FC<ResumeBodyProps> = (props) => {
     const { children, className, ...rest } = props;
 
     return (
-        <div {...rest} className={twMerge('mt-4', className)}>
+        <div {...rest} className={twMerge('mt-2', className)}>
             {children}
         </div>
     );
