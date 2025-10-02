@@ -279,7 +279,7 @@ interface SocialSectionProps {
 const SocialSection = (props: SocialSectionProps) => {
     return (
         <section>
-            <div className="py-2 border-t border-b border-gray-300">
+            <div className="py-2 border-t border-b border-gray-300 print:break-inside-avoid">
                 <div className="flex flex-wrap justify-between items-center gap-x-4 gap-y-2">
                     <a
                         className="flex items-center gap-2 text-xs"
@@ -417,7 +417,7 @@ const ExperienceSection = (props: ExperienceSectionProps) => {
             <ResumeBody className="space-y-4">
                 {props.experiences.map((row, i) => (
                     <div key={i} className="">
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-4 print:break-inside-avoid">
                             <div>
                                 <div className="text-[0.8rem] font-medium">
                                     {row.company} - <span className="font-normal">{row.location}</span>
@@ -433,7 +433,7 @@ const ExperienceSection = (props: ExperienceSectionProps) => {
                         <div className="flex items-center gap-4">
                             <ul className="text-[0.8rem] space-y-1 list-disc pl-3 mt-1">
                                 {row.achievements.map((a: string, ii: number) => (
-                                    <li key={ii} className="">
+                                    <li key={ii} className="print:break-inside-avoid">
                                         {a}
                                     </li>
                                 ))}
@@ -460,7 +460,7 @@ const EducationSection = (props: EducationSectionProps) => {
 
             <ResumeBody className="space-y-4">
                 {props.educations.map((row, i) => (
-                    <div key={i} className="">
+                    <div key={i}>
                         <div className="flex items-center gap-4">
                             <div>
                                 <div className="font-semibold">{row.degree}</div>
@@ -493,14 +493,14 @@ const SkillsSection = (props: SkillsSectionProps) => {
             <ResumeBody className="space-y-4">
                 {props.skills.map((row, i) => (
                     <div key={i}>
-                        <div>
+                        <div className="print:break-after-avoid-page">
                             <div className="text-sm font-semibold">{row.title}</div>
                         </div>
 
                         <div>
                             <div className="flex flex-wrap items-center gap-y-[2px]">
                                 {row.values.map((val, ii) => (
-                                    <div key={val} className="flex items-center text-[0.8rem]">
+                                    <div key={val} className="flex items-center text-[0.8rem] print:break-inside-avoid">
                                         {val}
                                         {ii < row.values.length - 1 && <span className="mx-2 text-[8px]">|</span>}
                                     </div>
@@ -529,14 +529,14 @@ const ProjectsSection = (props: ProjectsSectionProps) => {
             <ResumeBody className="space-y-4">
                 {props.projects.map((row, i) => (
                     <div key={i}>
-                        <div>
+                        <div className="print:break-after-avoid-page">
                             <div className="font-semibold">{row.title}</div>
                         </div>
 
                         {row.descriptionList.length > 0 && (
                             <ul className="text-[0.8rem] space-y-1 list-disc pl-3 mt-1">
                                 {row.descriptionList.map((a: string, ii: number) => (
-                                    <li key={ii} className="">
+                                    <li key={ii} className="print:break-inside-avoid">
                                         {a}
                                     </li>
                                 ))}
@@ -547,14 +547,14 @@ const ProjectsSection = (props: ProjectsSectionProps) => {
                             <a
                                 href={row.link}
                                 target="_blank"
-                                className="inline-block text-[0.8rem] text-blue-600 font-medium ml-3"
+                                className="inline-block text-[0.8rem] text-blue-600 font-medium ml-3 print:[break-before:avoid-page] print:[page-break-before:avoid]"
                             >
                                 {row.link}
                             </a>
                         )}
 
                         {row.technologiesUsed.length > 0 && (
-                            <div className="flex items-center gap-1 mt-1 ml-3">
+                            <div className="flex items-center gap-1 mt-1 ml-3 print:[break-before:avoid-page] print:[page-break-before:avoid]">
                                 <div className="text-sm font-semibold">Technologies Used:</div>
 
                                 <div className="flex flex-wrap items-center gap-y-[2px]">
@@ -576,22 +576,24 @@ const ProjectsSection = (props: ProjectsSectionProps) => {
 };
 
 /* =================================================================================================
- * PdfPage
+ * PdfViewer
  * ===============================================================================================*/
 
-interface PdfPageProps {
+interface PdfViewerProps {
     children: ReactNode;
 }
-const PdfPage = (props: PdfPageProps) => {
+const PdfViewer = (props: PdfViewerProps) => {
     const { children } = props;
 
     return (
         <main
-            style={{
-                width: '210mm',
-                height: '297mm',
-            }}
-            className="text-gray-900 bg-white mx-auto px-8 py-7 rounded-md shadow-[0_2px_10px_rgba(0,0,0,0.075),0_-2px_10px_rgba(0,0,0,0.075)] print:w-auto print:rounded-none print:shadow-none"
+            style={
+                {
+                    // width: '210mm',
+                    // height: '297mm',
+                }
+            }
+            className="text-gray-900 bg-white mx-auto px-8 py-7 w-[210mm] rounded-md shadow-[0_2px_10px_rgba(0,0,0,0.075),0_-2px_10px_rgba(0,0,0,0.075)] print:px-0 print:py-0 print:w-auto print:rounded-none print:shadow-none"
         >
             {children}
         </main>
@@ -611,7 +613,7 @@ const ResumePage = () => {
     return (
         <>
             <div className={twJoin('bg-white p-6 space-y-6 print:p-0 print:space-y-0', font.className)}>
-                <PdfPage>
+                <PdfViewer>
                     <HeaderSection heading={data.name} subHeading={data.designation} />
 
                     <div className="mt-4">
@@ -633,19 +635,20 @@ const ResumePage = () => {
                     <div className="mt-5">
                         <SkillsSection skills={data.skills} />
                     </div>
-                </PdfPage>
 
-                <PdfPage>
-                    <div>
-                        <ProjectsSection projects={data.projects.slice(0, 5)} />
+                    <div className="mt-5">
+                        <ProjectsSection projects={data.projects} />
                     </div>
-                </PdfPage>
+                </PdfViewer>
+                {/* 
+                <PdfViewer>
+                </PdfViewer>
 
-                <PdfPage>
+                <PdfViewer>
                     <div>
                         <ProjectsSection projects={data.projects.slice(5, data.projects.length)} />
                     </div>
-                </PdfPage>
+                </PdfViewer> */}
             </div>
         </>
     );
