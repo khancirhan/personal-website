@@ -69,7 +69,7 @@ const data = {
                 'Next.js',
                 'Redux',
                 'Angular',
-                'Bootstap',
+                'Bootstrap',
                 'Tailwind CSS',
                 'JQuery',
                 'Electron.js',
@@ -83,7 +83,7 @@ const data = {
         {
             title: 'Technologies',
             values: [
-                'Github Actions',
+                'GitHub Actions',
                 'CI/CD',
                 'Docker',
                 'Redis',
@@ -107,7 +107,7 @@ const data = {
                 'Lead and mentor a team of developers, driving project execution, code quality, and timely delivery.',
                 'Designed and optimized database schemas to ensure scalability, performance, and maintainability.',
                 'Created end-to-end system architectures, ensuring seamless integration across backend, frontend, and third-party services.',
-                "Implemented CI/CD pipelines and containerized applications using Docker, automating build, testing, and deployment processes while improving' scalability, environment consistency, and release efficiency.",
+                'Implemented CI/CD pipelines and containerized applications using Docker, automating build, testing, and deployment processes while improving scalability, environment consistency, and release efficiency.',
                 'Continuously optimized existing processes and tasks to reduce infrastructure costs.',
                 'Migrated the existing web application architectures to an API-based architecture and Single Page Applications.',
                 'Implemented a library system to ensure UI consistency and facilitate the use of components.',
@@ -139,7 +139,7 @@ const data = {
         {
             title: 'ProgressCenter',
             descriptionList: [
-                'Migrated legacy architecture to a modern API-driven architecture and Single Page Application framework.',
+                'Redesigned legacy architecture into a modern API-driven ecosystem',
                 'Co-designed and developed version 4 of the software from the ground up, ensuring performance, maintainability, and long-term scalability.',
                 'Transitioned the database, enhancing flexibility and handling of large, complex datasets.',
                 'Implemented caching mechanisms to reduce response times and improve performance.',
@@ -162,7 +162,6 @@ const data = {
         {
             title: 'Quantam',
             descriptionList: [
-                'Transformed the legacy system into a modern API-first architecture paired with a Single Page Application (SPA).',
                 'Engineered a secure and reliable API to seamlessly communicate with Quantam hardware.',
                 'Co-architected the overall system design and data flow, ensuring efficient and scalable data transfer.',
                 'Developed a database schema optimized for high-volume data processing and long-term scalability.',
@@ -237,12 +236,12 @@ const data = {
                 'Built a comprehensive admin panel to manage order assignments, track deliveries, and handle billing operations.',
             ],
             link: 'https://harisabykilo.com',
-            technologiesUsed: ['Javsacript', 'Angular', 'MongoDB'],
+            technologiesUsed: ['Javascript', 'Angular', 'MongoDB'],
         },
         {
             title: 'KashmirO2',
             descriptionList: [
-                'Built this non-profit application during the COVID-19 pandemic to provide essential medical oxygen to those in need.',
+                'Built a non-profit application during the COVID-19 pandemic to provide essential medical oxygen to patients in need.',
                 'Designed an intuitive interface to make it easy for users to request oxygen or offer help.',
             ],
             link: 'https://kashmiro2.com',
