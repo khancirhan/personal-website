@@ -58,7 +58,7 @@ const data = {
         website: 'khancirhan.vercel.app',
         github: 'github.com/khancirhan',
     },
-    about: `Software Engineer & Team Lead with 5 years of experience building end-to-end software and designing scalable systems. Proficient in the MERN stack and multiple programming languages, I create high-performance solutions from idea to production. I also have a knack for UI, building dashboards and applications that are simple, intuitive, and easy for users to navigate.`,
+    about: 'Software Engineer & Team Lead with 5+ years of experience architecting and delivering end-to-end software solutions. Skilled in the MERN stack and multiple programming languages, with a strong focus on scalability, performance, and system reliability. Passionate about creating intuitive, user-centric dashboards and platforms that combine clean design with robust functionality. Experienced in leading cross-functional teams, modernizing legacy systems, and driving projects from concept to production deployment.',
     skills: [
         { title: 'Languages', values: ['Typescript', 'Javascript', 'Python', 'Java', 'PHP', 'HTML 5', 'CSS 3'] },
         {
@@ -104,13 +104,19 @@ const data = {
             location: 'Srinagar, Jammu & Kashmir',
             imageUrl: '/logos/codeus-logo.svg',
             achievements: [
-                'Lead and mentor a team of developers, driving project execution, code quality, and timely delivery.',
-                'Designed and optimized database schemas to ensure scalability, performance, and maintainability.',
-                'Created end-to-end system architectures, ensuring seamless integration across backend, frontend, and third-party services.',
-                'Implemented CI/CD pipelines and containerized applications using Docker, automating build, testing, and deployment processes while improving scalability, environment consistency, and release efficiency.',
-                'Continuously optimized existing processes and tasks to reduce infrastructure costs.',
-                'Migrated the existing web application architectures to an API-based architecture and Single Page Applications.',
-                'Implemented a library system to ensure UI consistency and facilitate the use of components.',
+                'Led and mentored a team of developers, overseeing architecture decisions, code quality, and on-time delivery of key projects.',
+
+                'Designed and optimized scalable database schemas to ensure high performance, maintainability, and efficient data management.',
+
+                'Architected and implemented end-to-end system designs, enabling seamless integration across backend services, frontend applications, and third-party APIs.',
+
+                'Developed CI/CD pipelines and containerized applications using Docker, automating build, test, and deployment workflows to improve release speed, consistency, and scalability.',
+
+                'Streamlined infrastructure and deployment processes, achieving measurable reductions in infrastructure costs and operational overhead.',
+
+                'Migrated legacy web architectures to a modern API-based backend and Single Page Application (SPA) frontend, improving performance and developer productivity.',
+
+                'Built and standardized a shared UI component library, ensuring consistent design language and faster frontend development across projects.',
             ],
         },
         {
@@ -120,10 +126,10 @@ const data = {
             location: 'Remote',
             imageUrl: '',
             achievements: [
-                'Worked on Inventory Management System that streamlines order processing and shipment from various platforms such as Ebay and Amazon.',
-                "Created an order-processing module that integrates with Ebay's Order and Shipment APIs.",
-                'Created a product catalog module for adding and listing all products.',
-                'Developed the frontend in Angular for product listing.',
+                'Developed an Inventory Management System to streamline order processing and shipment workflows across multiple e-commerce platforms including eBay and Amazon.',
+                'Developed an order-processing module integrating directly with eBay’s Order and Shipment APIs, enabling automated synchronization of orders and delivery status.',
+                'Built a dynamic product catalog module to efficiently manage product listings, updates, and inventory data.',
+                'Developed and optimized the frontend using Angular, delivering a responsive and intuitive interface for product management and tracking.',
             ],
         },
     ],
@@ -139,13 +145,13 @@ const data = {
         {
             title: 'ProgressCenter',
             descriptionList: [
-                'Redesigned legacy architecture into a modern API-driven ecosystem',
-                'Co-designed and developed version 4 of the software from the ground up, ensuring performance, maintainability, and long-term scalability.',
-                'Transitioned the database, enhancing flexibility and handling of large, complex datasets.',
-                'Implemented caching mechanisms to reduce response times and improve performance.',
-                'Contributed to integrating AI capabilities into the platform, enabling smarter insights.',
+                'Redesigned a legacy monolithic architecture into a modern, API-driven ecosystem, improving maintainability and scalability.',
+                'Co-architected and developed Version 4 of the platform from the ground up, optimizing for performance, modularity, and long-term growth.',
+                'Migrated and restructured the database layer, enhancing flexibility, data consistency, and the ability to handle large, complex datasets efficiently.',
+                'Implemented advanced caching and query optimization techniques, reducing average response times by up to 50%.',
+                'Integrated AI capabilities, enabling smarter insights.',
                 'Designed and developed a public API to support third-party integrations and extend platform capabilities.',
-                'Integrated with major third-party applications, including Procore and Autodesk Construction Cloud, expanding the product ecosystem.',
+                'Established seamless integrations with major construction platforms such as Procore and Autodesk Construction Cloud, significantly expanding the product’s ecosystem and interoperability.',
             ],
             link: '',
             technologiesUsed: [
@@ -157,16 +163,17 @@ const data = {
                 'AWS Lambda',
                 'Docker',
                 'Redis',
+                'FFMPEG',
             ],
         },
         {
             title: 'Quantam',
             descriptionList: [
-                'Engineered a secure and reliable API to seamlessly communicate with Quantam hardware.',
-                'Co-architected the overall system design and data flow, ensuring efficient and scalable data transfer.',
-                'Developed a database schema optimized for high-volume data processing and long-term scalability.',
-                'Introduced advanced caching strategies to enhance speed and responsiveness.',
-                'Built a unified authentication system and an accompanying SDK to enable secure, consistent login across multiple dashboards.',
+                'Engineered a secure and reliable API to seamlessly communicate with Quantum hardware, capable of handling 100GB+ of data per day with minimal latency.',
+                'Co-architected the overall system design and data flow, ensuring efficient, fault-tolerant, and horizontally scalable data transfer across distributed nodes.',
+                'Developed an optimized database schema for high-volume, concurrent data ingestion and real-time query performance.',
+                'Introduced advanced caching and batching mechanisms to improve throughput and reduce API response time by up to 60%.',
+                'Built a unified authentication and authorization system, including an SDK for secure, consistent access across multiple internal dashboards.',
             ],
             link: '',
             technologiesUsed: ['Typescript', 'React.js', 'Express.js', 'MongoDB', 'AWS Lambda', 'Docker', 'Redis'],
@@ -190,12 +197,12 @@ const data = {
                 'Designed and implemented AI-driven snag detection features, improving accuracy and efficiency in identifying construction issues.',
             ],
             link: '',
-            technologiesUsed: ['SLAM', 'FFMPEG', 'Typescript', 'React.js', 'Three.js', 'React Fibre'],
+            technologiesUsed: ['SLAM', 'FFMPEG', 'Typescript', 'React.js', 'Three.js', 'React Three Fiber'],
         },
         {
             title: 'AI Audio Transcription Software',
             descriptionList: [
-                'Built an application for transcribing audio in multiple languages.',
+                'Built an application to transcribe audio in multiple languages.',
                 'Added support for generating subtitles from transcribed audio.',
                 'Implemented a system to organize audio files into folders for easy management.',
                 'Integrated Stripe payment gateway to handle subscriptions and transactions.',
@@ -206,15 +213,15 @@ const data = {
         {
             title: 'ProgressGPT',
             descriptionList: [
-                'Designed and co-developed a real-time construction jobsite assistant for instant updates, task tracking, and progress reporting for construction teams.',
+                'Designed and co-developed a real-time jobsite assistant for construction teams, enabling instant updates, task tracking, and progress reporting.',
             ],
             link: '',
             technologiesUsed: ['Python', 'Typescript', 'React.js'],
         },
         {
-            title: 'PeeCee Whatsapp Bot',
+            title: 'PeeCee WhatsApp Bot',
             descriptionList: [
-                'Developed a WhatsApp bot API for ProgressCenter to automate interactions and improve user engagement.',
+                'Developed a WhatsApp Bot API for ProgressCenter to automate interactions and improve user engagement.',
                 'Built an SDK with routing functionality similar to Express.js.',
             ],
             link: '',
@@ -223,7 +230,7 @@ const data = {
         {
             title: 'Hizmet Food Delivery',
             descriptionList: [
-                'Co-founded this application to deliver food within Kashmir.',
+                'Co-founded a food delivery application serving Kashmir.',
                 'Implemented features to track deliveries in real time and improve overall operational workflow.',
             ],
             link: '',
@@ -232,7 +239,7 @@ const data = {
         {
             title: 'HarisaByKilo',
             descriptionList: [
-                'Designed and developed the frontend and backend for an online platform delivering Harisa, a traditional Kashmiri delicacy, straight to your doorstep in just five simple steps.',
+                'Designed and developed the frontend and backend for an online platform delivering Harisa, a traditional Kashmiri delicacy, straight to your doorstep in a simple five-step process.',
                 'Built a comprehensive admin panel to manage order assignments, track deliveries, and handle billing operations.',
             ],
             link: 'https://harisabykilo.com',
@@ -241,7 +248,7 @@ const data = {
         {
             title: 'KashmirO2',
             descriptionList: [
-                'Built a non-profit application during the COVID-19 pandemic to provide essential medical oxygen to patients in need.',
+                'Developed a non-profit platform during the COVID-19 pandemic to provide essential medical oxygen to patients in need.',
                 'Designed an intuitive interface to make it easy for users to request oxygen or offer help.',
             ],
             link: 'https://kashmiro2.com',
