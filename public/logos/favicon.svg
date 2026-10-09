@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    :root { --ink: #171717; --accent: #C94B3C; }
+    @media (prefers-color-scheme: dark) {
+      :root { --ink: #EDEDE9; --accent: #D65A4A; }
+    }
+    .ink { stroke: var(--ink); }
+    .accent { stroke: var(--accent); }
+  </style>
+  <defs>
+    <clipPath id="q-tl"><rect x="0" y="0" width="47" height="47"/></clipPath>
+    <clipPath id="q-bl"><rect x="0" y="53" width="47" height="47"/></clipPath>
+    <clipPath id="q-br"><rect x="53" y="53" width="47" height="47"/></clipPath>
+    <clipPath id="q-tr"><rect x="53" y="0" width="47" height="47"/></clipPath>
+  </defs>
+  <g clip-path="url(#q-tl)">
+    <circle class="ink" cx="50" cy="50" r="35" fill="none" stroke-width="20"/>
+  </g>
+  <g clip-path="url(#q-bl)">
+    <circle class="ink" cx="50" cy="50" r="35" fill="none" stroke-width="20"/>
+  </g>
+  <g clip-path="url(#q-br)">
+    <circle class="ink" cx="50" cy="50" r="35" fill="none" stroke-width="20"/>
+  </g>
+  <g transform="translate(7 -7)" clip-path="url(#q-tr)">
+    <circle class="accent" cx="50" cy="50" r="35" fill="none" stroke-width="20"/>
+  </g>
+</svg>
