@@ -1,0 +1,3542 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Cirhan Yaqoob — Lead Product Engineer</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap"
+        />
+        <style>
+            :root,
+            [data-theme='light'] {
+                --bg: #f7f7f4;
+                --fg: #171717;
+                --muted: #6b6b6b;
+                --line: #e5e5e2;
+                --accent: #c94b3c;
+                --accent-hover: #b23f31;
+                --panel: #efefea;
+                --surface: #ffffff;
+                --inv-bg: #171717;
+                --inv-fg: #f7f7f4;
+                --inv-muted: #a3a39e;
+                --inv-line: #2f2f2d;
+                --shadow: 0 1px 2px rgba(23, 23, 23, 0.04), 0 40px 80px -40px rgba(23, 23, 23, 0.28);
+            }
+            [data-theme='dark'] {
+                --bg: #111110;
+                --fg: #edede9;
+                --muted: #9b9b96;
+                --line: #262624;
+                --accent: #d65a4a;
+                --accent-hover: #e26c5c;
+                --panel: #181817;
+                --surface: #1a1a19;
+                --inv-bg: #1b1b1a;
+                --inv-fg: #edede9;
+                --inv-muted: #9b9b96;
+                --inv-line: #2f2f2d;
+                --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 40px 80px -40px rgba(0, 0, 0, 0.7);
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                margin: 0;
+                background: var(--bg);
+                color: var(--fg);
+                font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+                -webkit-font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+                transition:
+                    background 0.3s,
+                    color 0.3s;
+            }
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+            a:hover {
+                color: var(--accent);
+            }
+            ::selection {
+                background: var(--accent);
+                color: #fff;
+            }
+
+            /* nav */
+            .nav {
+                position: sticky;
+                top: 0;
+                z-index: 50;
+                background: transparent;
+                border-bottom: 1px solid transparent;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                transition:
+                    background 0.3s,
+                    border-color 0.3s;
+            }
+            .nav.scrolled,
+            .nav.menu-open {
+                background: color-mix(in oklch, var(--bg) 82%, transparent);
+                backdrop-filter: saturate(140%) blur(14px);
+                -webkit-backdrop-filter: saturate(140%) blur(14px);
+                border-bottom-color: var(--line);
+            }
+            .nav-inner {
+                max-width: 1440px;
+                margin: 0 auto;
+                padding: 0 clamp(20px, 4vw, 56px);
+                height: 64px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+            }
+            .logo {
+                font-weight: 600;
+                font-size: 15px;
+                letter-spacing: 0.02em;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                white-space: nowrap;
+                flex: none;
+            }
+            .logo svg {
+                display: block;
+                overflow: visible;
+                flex: none;
+            }
+            .nav-links {
+                display: flex;
+                gap: 36px;
+                font-size: 14px;
+                color: var(--muted);
+            }
+            .nav-actions {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                flex: none;
+            }
+            .theme-btn {
+                height: 34px;
+                padding: 0 10px;
+                border: 1px solid var(--line);
+                background: transparent;
+                color: var(--muted);
+                border-radius: 6px;
+                font:
+                    500 11px 'Geist Mono',
+                    monospace;
+                letter-spacing: 0.1em;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                white-space: nowrap;
+                transition:
+                    border-color 0.2s,
+                    color 0.2s;
+            }
+            .theme-btn:hover {
+                border-color: var(--fg) !important;
+                color: var(--fg) !important;
+            }
+            .theme-dot {
+                width: 9px;
+                height: 9px;
+                border-radius: 50%;
+                border: 1.5px solid currentColor;
+                background: currentColor;
+                flex: none;
+            }
+            [data-theme='dark'] .theme-dot {
+                background: transparent;
+            }
+            .btn-dark {
+                height: 34px;
+                padding: 0 14px;
+                background: var(--fg);
+                color: var(--bg);
+                border-radius: 6px;
+                font-size: 13px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                white-space: nowrap;
+                transition:
+                    gap 0.25s,
+                    background 0.2s;
+            }
+            .btn-dark:hover {
+                gap: 12px !important;
+                background: var(--accent) !important;
+                color: #fff !important;
+            }
+            .burger {
+                width: 44px;
+                height: 44px;
+                margin-right: -10px;
+                border: 0;
+                background: transparent;
+                color: var(--fg);
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                flex: none;
+            }
+            .burger span {
+                display: block;
+                width: 22px;
+                height: 2px;
+                border-radius: 1px;
+                background: currentColor;
+                transition:
+                    transform 0.25s,
+                    opacity 0.2s;
+            }
+            .burger.open span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+            .burger.open span:nth-child(2) {
+                opacity: 0;
+            }
+            .burger.open span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+            .mobile-menu {
+                display: none;
+                border-top: 1px solid var(--line);
+                padding: 8px clamp(20px, 4vw, 56px) 20px;
+                flex-direction: column;
+                background: var(--bg);
+            }
+            .mobile-menu.open {
+                display: flex;
+            }
+            .mobile-menu > a {
+                font-size: 19px;
+                font-weight: 500;
+                letter-spacing: -0.01em;
+                padding: 16px 0;
+                align-items: center;
+                border-bottom: 1px solid var(--line);
+                display: flex;
+                justify-content: space-between;
+            }
+            .mobile-menu > a span {
+                font:
+                    12px 'Geist Mono',
+                    monospace;
+                color: var(--accent);
+            }
+            .mobile-menu-actions {
+                display: flex;
+                gap: 10px;
+                margin-top: 20px;
+            }
+            .mobile-menu-actions .btn-dark {
+                flex: 1;
+                height: 48px;
+                font-size: 15px;
+                justify-content: center;
+            }
+            .mobile-menu-actions .theme-btn {
+                height: 48px;
+                padding: 0 16px;
+            }
+            .desktop-only {
+                display: flex;
+            }
+            .mobile-only {
+                display: none;
+            }
+            @media (max-width: 759px) {
+                .desktop-only {
+                    display: none !important;
+                }
+                .mobile-only {
+                    display: flex !important;
+                }
+            }
+
+            /* hero */
+            .hero-line {
+                display: block;
+                overflow: hidden;
+                padding-bottom: 0.06em;
+            }
+            .hero-line > span {
+                display: block;
+            }
+            @media (prefers-reduced-motion: no-preference) {
+                .hero-line > span {
+                    animation: hero-reveal 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+                }
+                .hero-line:nth-of-type(1) > span {
+                    animation-delay: 0.08s;
+                }
+                .hero-line:nth-of-type(2) > span {
+                    animation-delay: 0.17s;
+                }
+                .hero-line:nth-of-type(3) > span {
+                    animation-delay: 0.26s;
+                }
+            }
+            @keyframes hero-reveal {
+                from {
+                    transform: translateY(105%);
+                }
+                to {
+                    transform: translateY(0);
+                }
+            }
+
+            .hero-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                width: auto;
+            }
+            .hero-actions > a {
+                flex: 0 0 auto;
+            }
+            @media (max-width: 639px) {
+                .hero-actions {
+                    width: 100% !important;
+                }
+                .hero-actions > a {
+                    flex: 1 1 160px !important;
+                }
+            }
+            .btn-accent {
+                justify-content: center;
+                height: 52px;
+                padding: 0 22px;
+                background: var(--accent);
+                color: #fff;
+                border-radius: 6px;
+                font-size: 15px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                transition:
+                    gap 0.25s,
+                    background 0.2s;
+            }
+            .btn-accent:hover {
+                gap: 16px !important;
+                background: var(--accent-hover) !important;
+                color: #fff !important;
+            }
+            .btn-outline {
+                justify-content: center;
+                height: 52px;
+                padding: 0 22px;
+                border: 1px solid var(--line);
+                color: var(--fg);
+                border-radius: 6px;
+                font-size: 15px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                transition: border-color 0.2s;
+            }
+            .btn-outline:hover {
+                border-color: var(--fg) !important;
+                color: var(--fg) !important;
+            }
+            .btn-outline-gap {
+                height: 52px;
+                padding: 0 22px;
+                border: 1px solid var(--line);
+                color: var(--fg);
+                border-radius: 6px;
+                font-size: 15px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                transition:
+                    gap 0.25s,
+                    border-color 0.2s;
+            }
+            .btn-outline-gap:hover {
+                gap: 16px !important;
+                border-color: var(--fg) !important;
+                color: var(--fg) !important;
+            }
+
+            .stats-grid {
+                margin-top: clamp(56px, 8vw, 112px);
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                border-top: 1px solid var(--line);
+            }
+            .stats-grid .stat {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: stretch;
+                gap: 14px;
+                border-right: 1px solid var(--line);
+                border-bottom: none;
+                padding: 24px 24px 28px 0;
+            }
+            .stats-grid .stat:nth-child(2) {
+                padding: 24px 24px 28px;
+            }
+            .stats-grid .stat:nth-child(3) {
+                border-right: none;
+                padding: 24px 0 28px 24px;
+            }
+            @media (max-width: 639px) {
+                .stats-grid {
+                    grid-template-columns: minmax(0, 1fr);
+                }
+                .stats-grid .stat {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: baseline;
+                    border-right: none !important;
+                    border-bottom: 1px solid var(--line);
+                    padding: 18px 0 !important;
+                }
+            }
+
+            .cta-btn {
+                flex: 0 0 auto;
+            }
+            @media (max-width: 639px) {
+                .cta-btn {
+                    flex: 1 1 160px;
+                }
+            }
+
+            /* work images */
+            .img-frame:hover .img-zoom {
+                transform: scale(1.025) !important;
+            }
+            .portrait-frame:hover {
+                filter: grayscale(0) contrast(1) !important;
+            }
+
+            /* partnership */
+            .sticky-col {
+                position: static;
+                top: 96px;
+            }
+            @media (min-width: 860px) {
+                .sticky-col {
+                    position: sticky;
+                }
+            }
+
+            /* database pipeline */
+            .pipe-row {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+                font:
+                    500 12px 'Geist Mono',
+                    monospace;
+                letter-spacing: 0.04em;
+            }
+            .pipe-arrow-col {
+                display: none;
+            }
+            @media (max-width: 899px) {
+                .pipe-row {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                .pipe-arrow-row {
+                    display: none;
+                }
+                .pipe-arrow-col {
+                    display: inline;
+                }
+            }
+
+            /* contact */
+            .contact-link:hover {
+                color: var(--accent) !important;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .hero-line > span {
+                    animation: none;
+                }
+            }
+        </style>
+        <script>
+            // Applied before first paint so a saved dark theme doesn't flash light.
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved === 'dark' || saved === 'light') document.documentElement.setAttribute('data-theme', saved);
+            } catch (e) {}
+        </script>
+    </head>
+    <body>
+        <header id="nav" class="nav">
+            <div class="nav-inner">
+                <a href="#top" class="logo"
+                    ><svg viewBox="0 0 100 100" width="22" height="22" aria-hidden="true">
+                        <g transform="translate(0 0)">
+                            <clipPath id="lgN00"><rect x="0" y="0" width="47" height="47"></rect></clipPath>
+                            <g clip-path="url(#lgN00)">
+                                <circle
+                                    cx="50"
+                                    cy="50"
+                                    r="35"
+                                    fill="none"
+                                    stroke-width="20"
+                                    stroke="currentColor"
+                                ></circle>
+                            </g>
+                        </g>
+                        <g transform="translate(0 0)">
+                            <clipPath id="lgN053"><rect x="0" y="53" width="47" height="47"></rect></clipPath>
+                            <g clip-path="url(#lgN053)">
+                                <circle
+                                    cx="50"
+                                    cy="50"
+                                    r="35"
+                                    fill="none"
+                                    stroke-width="20"
+                                    stroke="currentColor"
+                                ></circle>
+                            </g>
+                        </g>
+                        <g transform="translate(0 0)">
+                            <clipPath id="lgN5353"><rect x="53" y="53" width="47" height="47"></rect></clipPath>
+                            <g clip-path="url(#lgN5353)">
+                                <circle
+                                    cx="50"
+                                    cy="50"
+                                    r="35"
+                                    fill="none"
+                                    stroke-width="20"
+                                    stroke="currentColor"
+                                ></circle>
+                            </g>
+                        </g>
+                        <g transform="translate(7 -7)">
+                            <clipPath id="lgN530"><rect x="53" y="0" width="47" height="47"></rect></clipPath>
+                            <g clip-path="url(#lgN530)">
+                                <circle
+                                    cx="50"
+                                    cy="50"
+                                    r="35"
+                                    fill="none"
+                                    stroke-width="20"
+                                    style="stroke: var(--accent)"
+                                ></circle>
+                            </g>
+                        </g></svg
+                    >CIRHAN Y.</a
+                >
+
+                <nav class="nav-links desktop-only">
+                    <a href="#services">Services</a>
+                    <a href="#work">Work</a>
+                    <a href="#about">About</a>
+                </nav>
+
+                <div class="nav-actions desktop-only">
+                    <button class="theme-btn" data-theme-toggle aria-label="Toggle dark mode">
+                        <span class="theme-dot"></span><span class="theme-label">DARK</span>
+                    </button>
+                    <a href="#contact" class="btn-dark">Let's Talk <span>→</span></a>
+                </div>
+
+                <button id="menuToggle" class="burger mobile-only" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+
+            <nav id="mobileMenu" class="mobile-menu">
+                <a href="#services" data-menu-link>Services <span>02</span></a>
+                <a href="#work" data-menu-link>Work <span>03</span></a>
+                <a href="#about" data-menu-link>About <span>08</span></a>
+                <a href="#contact" data-menu-link>Contact <span>09</span></a>
+                <div class="mobile-menu-actions">
+                    <a href="#contact" data-menu-link class="btn-dark">Let's Talk <span>→</span></a>
+                    <button class="theme-btn" data-theme-toggle aria-label="Toggle dark mode">
+                        <span class="theme-dot"></span><span class="theme-label">DARK</span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <main id="top">
+            <!-- HERO -->
+            <section
+                data-screen-label="Hero"
+                style="
+                    max-width: 1440px;
+                    margin: 0 auto;
+                    padding: calc(clamp(40px, 6vw, 88px) - 8px) clamp(20px, 4vw, 56px) 0;
+                "
+            >
+                <div
+                    style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                        gap: 16px;
+                        font:
+                            500 12px 'Geist Mono',
+                            monospace;
+                        letter-spacing: 0.08em;
+                        text-transform: uppercase;
+                        color: var(--muted);
+                    "
+                >
+                    <div style="display: flex; align-items: center; gap: 10px; color: var(--fg)">
+                        <span
+                            style="
+                                width: 7px;
+                                height: 7px;
+                                border-radius: 50%;
+                                background: var(--accent);
+                                box-shadow: 0 0 0 4px color-mix(in oklch, var(--accent) 18%, transparent);
+                            "
+                        ></span
+                        >Available for freelance / contract
+                    </div>
+                    <div>Cirhan Yaqoob</div>
+                </div>
+                <div
+                    style="
+                        margin-top: clamp(36px, 5.5vw, 80px);
+                        font:
+                            500 12px 'Geist Mono',
+                            monospace;
+                        letter-spacing: 0.08em;
+                        color: var(--muted);
+                    "
+                >
+                    <span style="color: var(--accent)">01</span> / LEAD PRODUCT ENGINEER
+                </div>
+                <h1
+                    style="
+                        margin: 20px 0 0;
+                        font-weight: 600;
+                        font-size: clamp(40px, 7.2vw, 128px);
+                        line-height: 0.95;
+                        letter-spacing: -0.05em;
+                        text-wrap: balance;
+                    "
+                >
+                    <span class="hero-line"><span>I Build, Architect</span></span>
+                    <span class="hero-line"><span>&amp; Scale Software</span></span>
+                    <span class="hero-line"
+                        ><span>Products<span style="color: var(--accent)">.</span></span></span
+                    >
+                </h1>
+                <div
+                    data-reveal
+                    style="
+                        margin-top: clamp(40px, 6vw, 80px);
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 32px 48px;
+                        align-items: flex-end;
+                        justify-content: space-between;
+                    "
+                >
+                    <p
+                        style="
+                            flex: 0 1 620px;
+                            margin: 0;
+                            font-size: clamp(18px, 1.7vw, 23px);
+                            line-height: 1.45;
+                            color: var(--muted);
+                            text-wrap: pretty;
+                        "
+                    >
+                        I help startups and businesses turn ideas into
+                        <span style="color: var(--fg)">production-ready software</span> — from product architecture and
+                        database design to development, infrastructure and CI/CD.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn-accent">Start a Project <span>→</span></a>
+                        <a href="#work" class="btn-outline">View My Work</a>
+                    </div>
+                </div>
+                <div data-reveal class="stats-grid">
+                    <div class="stat">
+                        <div
+                            style="
+                                font-size: clamp(34px, 3.6vw, 52px);
+                                font-weight: 500;
+                                letter-spacing: -0.045em;
+                                line-height: 1;
+                            "
+                        >
+                            <span data-years>7</span>+
+                        </div>
+                        <div
+                            style="
+                                font:
+                                    500 11px 'Geist Mono',
+                                    monospace;
+                                letter-spacing: 0.1em;
+                                color: var(--muted);
+                            "
+                        >
+                            YEARS EXPERIENCE
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div
+                            style="
+                                font-size: clamp(34px, 3.6vw, 52px);
+                                font-weight: 500;
+                                letter-spacing: -0.045em;
+                                line-height: 1;
+                            "
+                        >
+                            20+
+                        </div>
+                        <div
+                            style="
+                                font:
+                                    500 11px 'Geist Mono',
+                                    monospace;
+                                letter-spacing: 0.1em;
+                                color: var(--muted);
+                            "
+                        >
+                            PRODUCTS BUILT
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div
+                            style="
+                                font-size: clamp(34px, 3.6vw, 52px);
+                                font-weight: 500;
+                                letter-spacing: -0.045em;
+                                line-height: 1;
+                            "
+                        >
+                            0→1
+                        </div>
+                        <div
+                            style="
+                                font:
+                                    500 11px 'Geist Mono',
+                                    monospace;
+                                letter-spacing: 0.1em;
+                                color: var(--muted);
+                            "
+                        >
+                            END-TO-END OWNERSHIP
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SERVICES -->
+            <section
+                id="services"
+                data-screen-label="Capabilities"
+                style="
+                    scroll-margin-top: 64px;
+                    max-width: 1440px;
+                    margin: 0 auto;
+                    padding: clamp(72px, 12vw, 176px) clamp(20px, 4vw, 56px) 0;
+                "
+            >
+                <div
+                    data-reveal
+                    style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 20px 32px;
+                        border-top: 1px solid var(--fg);
+                        padding-top: 44px;
+                    "
+                >
+                    <div
+                        style="
+                            flex: 3 1 200px;
+                            font:
+                                500 12px 'Geist Mono',
+                                monospace;
+                            letter-spacing: 0.08em;
+                            color: var(--muted);
+                        "
+                    >
+                        <span style="color: var(--accent)">02</span> / SERVICES
+                    </div>
+                    <div style="flex: 9 1 520px">
+                        <h2
+                            style="
+                                margin: 0;
+                                font-weight: 600;
+                                font-size: clamp(32px, 4.2vw, 60px);
+                                line-height: 0.95;
+                                letter-spacing: -0.045em;
+                                text-wrap: balance;
+                            "
+                        >
+                            What I can help you build
+                        </h2>
+                        <p
+                            style="
+                                margin: 20px 0 0;
+                                font-size: clamp(17px, 1.5vw, 20px);
+                                color: var(--muted);
+                                line-height: 1.5;
+                            "
+                        >
+                            From the first architectural decision to the production deployment.
+                        </p>
+                    </div>
+                </div>
+                <div style="margin-top: clamp(48px, 6vw, 80px); border-top: 1px solid var(--line)">
+                    <div
+                        data-reveal
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 16px 32px;
+                            padding: 36px 0;
+                            border-bottom: 1px solid var(--line);
+                        "
+                    >
+                        <div style="flex: 3 1 200px; display: flex; gap: 20px">
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    padding-top: 8px;
+                                "
+                                >01</span
+                            >
+                            <h3
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(24px, 2.2vw, 30px);
+                                    font-weight: 600;
+                                    letter-spacing: -0.03em;
+                                    line-height: 1.1;
+                                "
+                            >
+                                Product Engineering
+                            </h3>
+                        </div>
+                        <p style="flex: 4 1 280px; margin: 0; font-size: 18px; line-height: 1.5; padding-top: 4px">
+                            Build products from idea to production.
+                        </p>
+                        <div
+                            style="
+                                flex: 5 1 320px;
+                                display: grid;
+                                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                                gap: 10px 24px;
+                                font-size: 15px;
+                                color: var(--muted);
+                                padding-top: 6px;
+                            "
+                        >
+                            <span>SaaS platforms</span><span>Business applications</span><span>Internal tools</span
+                            ><span>MVPs</span><span>Customer-facing applications</span>
+                        </div>
+                    </div>
+                    <div
+                        data-reveal
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 16px 32px;
+                            padding: 36px 0;
+                            border-bottom: 1px solid var(--line);
+                        "
+                    >
+                        <div style="flex: 3 1 200px; display: flex; gap: 20px">
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    padding-top: 8px;
+                                "
+                                >02</span
+                            >
+                            <h3
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(24px, 2.2vw, 30px);
+                                    font-weight: 600;
+                                    letter-spacing: -0.03em;
+                                    line-height: 1.1;
+                                "
+                            >
+                                Architecture &amp; System Design
+                            </h3>
+                        </div>
+                        <p style="flex: 4 1 280px; margin: 0; font-size: 18px; line-height: 1.5; padding-top: 4px">
+                            Design systems that are maintainable and ready to scale.
+                        </p>
+                        <div
+                            style="
+                                flex: 5 1 320px;
+                                display: grid;
+                                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                                gap: 10px 24px;
+                                font-size: 15px;
+                                color: var(--muted);
+                                padding-top: 6px;
+                            "
+                        >
+                            <span>Application architecture</span><span>Backend architecture</span><span>API design</span
+                            ><span>Authentication &amp; authorization</span><span>Multi-tenant architecture</span
+                            ><span>Scalability and performance</span>
+                        </div>
+                    </div>
+                    <div
+                        data-reveal
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 16px 32px;
+                            padding: 36px 0;
+                            border-bottom: 1px solid var(--line);
+                        "
+                    >
+                        <div style="flex: 3 1 200px; display: flex; gap: 20px">
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    padding-top: 8px;
+                                "
+                                >03</span
+                            >
+                            <h3
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(24px, 2.2vw, 30px);
+                                    font-weight: 600;
+                                    letter-spacing: -0.03em;
+                                    line-height: 1.1;
+                                "
+                            >
+                                Backend Engineering
+                            </h3>
+                        </div>
+                        <p style="flex: 4 1 280px; margin: 0; font-size: 18px; line-height: 1.5; padding-top: 4px">
+                            Build the systems behind the product.
+                        </p>
+                        <div
+                            style="
+                                flex: 5 1 320px;
+                                display: grid;
+                                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                                gap: 10px 24px;
+                                font-size: 15px;
+                                color: var(--muted);
+                                padding-top: 6px;
+                            "
+                        >
+                            <span>TypeScript / Node.js</span><span>Go (Golang)</span><span>Python</span
+                            ><span>NestJS / Express</span><span>REST APIs</span><span>Business logic</span
+                            ><span>Background jobs</span><span>Queues</span><span>Caching</span
+                            ><span>Integrations</span>
+                        </div>
+                    </div>
+                    <div data-reveal style="display: flex; flex-wrap: wrap; gap: 16px 32px; padding: 36px 0">
+                        <div style="flex: 3 1 200px; display: flex; gap: 20px">
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    padding-top: 8px;
+                                "
+                                >04</span
+                            >
+                            <h3
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(24px, 2.2vw, 30px);
+                                    font-weight: 600;
+                                    letter-spacing: -0.03em;
+                                    line-height: 1.1;
+                                "
+                            >
+                                Frontend Engineering
+                            </h3>
+                        </div>
+                        <p style="flex: 4 1 280px; margin: 0; font-size: 18px; line-height: 1.5; padding-top: 4px">
+                            Build fast, polished interfaces people enjoy using.
+                        </p>
+                        <div
+                            style="
+                                flex: 5 1 320px;
+                                display: grid;
+                                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                                gap: 10px 24px;
+                                font-size: 15px;
+                                color: var(--muted);
+                                padding-top: 6px;
+                            "
+                        >
+                            <span>React / Next.js</span><span>TypeScript</span><span>Tailwind CSS</span
+                            ><span>Dashboards</span><span>Complex forms &amp; workflows</span
+                            ><span>Responsive design</span><span>State management</span><span>Performance</span>
+                        </div>
+                    </div>
+                    <div
+                        data-reveal
+                        style="
+                            background: var(--inv-bg);
+                            color: var(--inv-fg);
+                            border-radius: 10px;
+                            padding: clamp(28px, 4vw, 56px);
+                            border: 1px solid var(--inv-line);
+                        "
+                    >
+                        <div style="display: flex; flex-wrap: wrap; gap: 16px 32px">
+                            <div style="flex: 3 1 200px; display: flex; flex-direction: column; gap: 16px">
+                                <div style="display: flex; gap: 20px">
+                                    <span
+                                        style="
+                                            font:
+                                                500 12px 'Geist Mono',
+                                                monospace;
+                                            color: var(--accent);
+                                            padding-top: 10px;
+                                        "
+                                        >05</span
+                                    >
+                                    <h3
+                                        style="
+                                            margin: 0;
+                                            font-size: clamp(28px, 3vw, 42px);
+                                            font-weight: 600;
+                                            letter-spacing: -0.035em;
+                                            line-height: 1.02;
+                                        "
+                                    >
+                                        Database Engineering
+                                    </h3>
+                                </div>
+                                <div
+                                    style="
+                                        margin-left: 36px;
+                                        align-self: flex-start;
+                                        font:
+                                            500 11px 'Geist Mono',
+                                            monospace;
+                                        letter-spacing: 0.1em;
+                                        color: var(--accent);
+                                        border: 1px solid color-mix(in oklch, var(--accent) 55%, transparent);
+                                        border-radius: 4px;
+                                        padding: 5px 8px;
+                                    "
+                                >
+                                    CORE OFFERING
+                                </div>
+                            </div>
+                            <p
+                                style="
+                                    flex: 4 1 280px;
+                                    margin: 0;
+                                    font-size: clamp(20px, 1.8vw, 24px);
+                                    line-height: 1.35;
+                                    letter-spacing: -0.01em;
+                                    padding-top: 6px;
+                                "
+                            >
+                                Design data systems around real
+                                <span style="color: var(--accent)">business requirements</span>.
+                            </p>
+                            <div
+                                style="
+                                    flex: 5 1 320px;
+                                    display: grid;
+                                    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                                    gap: 10px 24px;
+                                    font-size: 15px;
+                                    color: var(--inv-muted);
+                                    padding-top: 8px;
+                                "
+                            >
+                                <span>PostgreSQL</span><span>MongoDB</span><span>Redis</span><span>Schema design</span
+                                ><span>Indexing</span><span>Query optimization</span><span>Data isolation</span
+                                ><span>Multi-tenancy</span><span>Reporting</span>
+                            </div>
+                        </div>
+                        <div
+                            class="pipe-row"
+                            style="
+                                margin-top: clamp(32px, 4vw, 52px);
+                                padding-top: 24px;
+                                border-top: 1px solid var(--inv-line);
+                            "
+                        >
+                            <span
+                                style="
+                                    padding: 9px 12px;
+                                    border: 1px solid var(--inv-line);
+                                    border-radius: 4px;
+                                    color: var(--inv-muted);
+                                    white-space: nowrap;
+                                "
+                                >Requirements</span
+                            ><span style="color: var(--inv-muted)"
+                                ><span class="pipe-arrow-row">→</span><span class="pipe-arrow-col">↓</span></span
+                            >
+                            <span
+                                style="
+                                    padding: 9px 12px;
+                                    border: 1px solid var(--inv-line);
+                                    border-radius: 4px;
+                                    color: var(--inv-muted);
+                                    white-space: nowrap;
+                                "
+                                >Data model</span
+                            ><span style="color: var(--inv-muted)"
+                                ><span class="pipe-arrow-row">→</span><span class="pipe-arrow-col">↓</span></span
+                            >
+                            <span
+                                style="
+                                    padding: 9px 12px;
+                                    border: 1px solid var(--inv-line);
+                                    border-radius: 4px;
+                                    color: var(--inv-muted);
+                                    white-space: nowrap;
+                                "
+                                >Schema</span
+                            ><span style="color: var(--inv-muted)"
+                                ><span class="pipe-arrow-row">→</span><span class="pipe-arrow-col">↓</span></span
+                            >
+                            <span
+                                style="
+                                    padding: 9px 12px;
+                                    border: 1px solid var(--inv-line);
+                                    border-radius: 4px;
+                                    color: var(--inv-muted);
+                                    white-space: nowrap;
+                                "
+                                >Indexes</span
+                            ><span style="color: var(--inv-muted)"
+                                ><span class="pipe-arrow-row">→</span><span class="pipe-arrow-col">↓</span></span
+                            >
+                            <span
+                                style="
+                                    padding: 9px 12px;
+                                    border: 1px solid var(--accent);
+                                    border-radius: 4px;
+                                    color: var(--inv-fg);
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 8px;
+                                    white-space: nowrap;
+                                "
+                                ><span
+                                    style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent)"
+                                ></span
+                                >Fast queries</span
+                            >
+                        </div>
+                    </div>
+                    <div
+                        data-reveal
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 16px 32px;
+                            padding: 36px 0;
+                            border-bottom: 1px solid var(--line);
+                        "
+                    >
+                        <div style="flex: 3 1 200px; display: flex; gap: 20px">
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    padding-top: 8px;
+                                "
+                                >06</span
+                            >
+                            <h3
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(24px, 2.2vw, 30px);
+                                    font-weight: 600;
+                                    letter-spacing: -0.03em;
+                                    line-height: 1.1;
+                                "
+                            >
+                                Cloud &amp; CI/CD
+                            </h3>
+                        </div>
+                        <p style="flex: 4 1 280px; margin: 0; font-size: 18px; line-height: 1.5; padding-top: 4px">
+                            Streamline the path from code to production.
+                        </p>
+                        <div
+                            style="
+                                flex: 5 1 320px;
+                                display: grid;
+                                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                                gap: 10px 24px;
+                                font-size: 15px;
+                                color: var(--muted);
+                                padding-top: 6px;
+                            "
+                        >
+                            <span>CI/CD pipelines</span><span>Automated deployments</span><span>Docker</span
+                            ><span>AWS</span><span>Nginx</span><span>Cloudflare</span
+                            ><span>Staging / production environments</span><span>Deployment workflows</span
+                            ><span>Infrastructure optimization</span>
+                        </div>
+                    </div>
+                    <div data-reveal style="display: flex; flex-wrap: wrap; gap: 16px 32px; padding: 36px 0">
+                        <div style="flex: 3 1 200px; display: flex; gap: 20px">
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    padding-top: 8px;
+                                "
+                                >07</span
+                            >
+                            <h3
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(24px, 2.2vw, 30px);
+                                    font-weight: 600;
+                                    letter-spacing: -0.03em;
+                                    line-height: 1.1;
+                                "
+                            >
+                                AI-Powered Applications
+                            </h3>
+                        </div>
+                        <p style="flex: 4 1 280px; margin: 0; font-size: 18px; line-height: 1.5; padding-top: 4px">
+                            Build useful AI capabilities into real products.
+                        </p>
+                        <div
+                            style="
+                                flex: 5 1 320px;
+                                display: grid;
+                                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                                gap: 10px 24px;
+                                font-size: 15px;
+                                color: var(--muted);
+                                padding-top: 6px;
+                            "
+                        >
+                            <span>LLM integrations</span><span>AI-powered workflows</span
+                            ><span>Audio transcription</span><span>Computer Vision</span><span>AI APIs</span
+                            ><span>Intelligent business processes</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WORK -->
+            <section
+                id="work"
+                data-screen-label="Selected Work"
+                style="
+                    scroll-margin-top: 64px;
+                    max-width: 1440px;
+                    margin: 0 auto;
+                    padding: clamp(72px, 12vw, 176px) clamp(20px, 4vw, 56px) 0;
+                "
+            >
+                <div
+                    data-reveal
+                    style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 20px 32px;
+                        border-top: 1px solid var(--fg);
+                        padding-top: 44px;
+                    "
+                >
+                    <div
+                        style="
+                            flex: 3 1 200px;
+                            font:
+                                500 12px 'Geist Mono',
+                                monospace;
+                            letter-spacing: 0.08em;
+                            color: var(--muted);
+                        "
+                    >
+                        <span style="color: var(--accent)">03</span> / SELECTED WORK
+                    </div>
+                    <div style="flex: 9 1 520px">
+                        <h2
+                            style="
+                                margin: 0;
+                                font-weight: 600;
+                                font-size: clamp(32px, 4.2vw, 60px);
+                                line-height: 0.95;
+                                letter-spacing: -0.045em;
+                            "
+                        >
+                            Things I've built
+                        </h2>
+                        <p
+                            style="
+                                margin: 20px 0 0;
+                                font-size: clamp(17px, 1.5vw, 20px);
+                                color: var(--muted);
+                                line-height: 1.5;
+                            "
+                        >
+                            Real products, real systems, real problems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- P01 -->
+                <article data-reveal style="margin-top: clamp(48px, 6vw, 80px)">
+                    <div
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: flex-end;
+                            justify-content: space-between;
+                            gap: 12px 32px;
+                            margin-bottom: 28px;
+                        "
+                    >
+                        <div style="display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap">
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--muted);
+                                    letter-spacing: 0.08em;
+                                "
+                                ><span style="color: var(--accent)">01</span> / 06</span
+                            >
+                            <h3
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(30px, 3.8vw, 54px);
+                                    font-weight: 600;
+                                    letter-spacing: -0.045em;
+                                    line-height: 1;
+                                "
+                            >
+                                ProgressCenter
+                            </h3>
+                        </div>
+                        <div
+                            style="
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                letter-spacing: 0.08em;
+                                color: var(--muted);
+                                text-transform: uppercase;
+                            "
+                        >
+                            Construction intelligence platform
+                        </div>
+                    </div>
+                    <div
+                        class="img-frame"
+                        style="
+                            border: 1px solid var(--line);
+                            border-radius: 10px;
+                            overflow: hidden;
+                            background: var(--surface);
+                            box-shadow: var(--shadow);
+                        "
+                    >
+                        <div style="aspect-ratio: 16/8.5; position: relative; overflow: hidden">
+                            <div
+                                class="img-zoom"
+                                style="
+                                    position: absolute;
+                                    inset: 0;
+                                    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+                                "
+                            >
+                                <img
+                                    src="public/images/progresscenter-v2-2x.png"
+                                    alt="ProgressCenter — live camera / site dashboard screenshot"
+                                    style="width: 100%; height: 100%; object-fit: cover; display: block"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 28px 48px">
+                        <p style="flex: 5 1 340px; margin: 0; font-size: 18px; line-height: 1.5; text-wrap: pretty">
+                            A platform for monitoring construction projects through live cameras, drone footage, site
+                            galleries and AI-powered safety detection.
+                        </p>
+                        <div style="flex: 3 1 220px">
+                            <div
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.1em;
+                                    color: var(--muted);
+                                    margin-bottom: 8px;
+                                "
+                            >
+                                MY ROLE
+                            </div>
+                            <div style="font-size: 16px; line-height: 1.5">
+                                Architecture · Backend · Frontend · Infrastructure · AI
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- P02 -->
+                <article
+                    data-reveal
+                    style="
+                        margin-top: clamp(64px, 11vw, 160px);
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 28px clamp(32px, 4vw, 64px);
+                        align-items: center;
+                    "
+                >
+                    <div style="flex: 7 1 520px; min-width: 0">
+                        <div
+                            class="img-frame"
+                            style="
+                                border: 1px solid var(--line);
+                                border-radius: 10px;
+                                overflow: hidden;
+                                background: var(--surface);
+                                box-shadow: var(--shadow);
+                            "
+                        >
+                            <div style="aspect-ratio: 16/10; position: relative; overflow: hidden">
+                                <div
+                                    class="img-zoom"
+                                    style="
+                                        position: absolute;
+                                        inset: 0;
+                                        transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+                                    "
+                                >
+                                    <img
+                                        src="public/images/audibly-mockup-v2.png"
+                                        alt="AI Transcription — transcript editor screenshot"
+                                        style="width: 100%; height: 100%; object-fit: cover; display: block"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex: 4 1 300px; display: flex; flex-direction: column; gap: 24px">
+                        <span
+                            style="
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                color: var(--muted);
+                                letter-spacing: 0.08em;
+                            "
+                            ><span style="color: var(--accent)">02</span> / 06</span
+                        >
+                        <div>
+                            <h3
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(28px, 2.8vw, 40px);
+                                    font-weight: 600;
+                                    letter-spacing: -0.04em;
+                                    line-height: 1;
+                                "
+                            >
+                                AI Transcription Platform
+                            </h3>
+                            <div
+                                style="
+                                    margin-top: 14px;
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.08em;
+                                    color: var(--muted);
+                                    text-transform: uppercase;
+                                "
+                            >
+                                Transcription workflow software
+                            </div>
+                        </div>
+                        <p style="margin: 0; font-size: 18px; line-height: 1.5; text-wrap: pretty">
+                            A complete transcription workflow for uploading audio, generating multilingual transcripts,
+                            editing content, organizing files and exporting results.
+                        </p>
+                        <div style="border-top: 1px solid var(--line); padding-top: 18px">
+                            <div
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.1em;
+                                    color: var(--muted);
+                                    margin-bottom: 8px;
+                                "
+                            >
+                                MY ROLE
+                            </div>
+                            <div style="font-size: 16px; line-height: 1.5">
+                                Backend · Product Engineering · Infrastructure · AI
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- P03 -->
+                <article
+                    data-reveal
+                    style="
+                        margin-top: clamp(64px, 11vw, 160px);
+                        display: flex;
+                        flex-wrap: wrap;
+                        flex-direction: row-reverse;
+                        gap: 28px clamp(32px, 4vw, 64px);
+                        align-items: center;
+                    "
+                >
+                    <div style="flex: 7 1 520px; min-width: 0">
+                        <div
+                            class="img-frame"
+                            style="
+                                border: 1px solid var(--line);
+                                border-radius: 10px;
+                                overflow: hidden;
+                                background: var(--surface);
+                                box-shadow: var(--shadow);
+                            "
+                        >
+                            <div style="aspect-ratio: 16/10; position: relative; overflow: hidden">
+                                <div
+                                    class="img-zoom"
+                                    style="
+                                        position: absolute;
+                                        inset: 0;
+                                        transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+                                    "
+                                >
+                                    <img
+                                        src="public/images/healthcare-mockup-2x.png"
+                                        alt="Healthcare — appointments / queue screenshot"
+                                        style="width: 100%; height: 100%; object-fit: cover; display: block"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex: 4 1 300px; display: flex; flex-direction: column; gap: 24px">
+                        <span
+                            style="
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                color: var(--muted);
+                                letter-spacing: 0.08em;
+                            "
+                            ><span style="color: var(--accent)">03</span> / 06</span
+                        >
+                        <div>
+                            <h3
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(28px, 2.8vw, 40px);
+                                    font-weight: 600;
+                                    letter-spacing: -0.04em;
+                                    line-height: 1;
+                                "
+                            >
+                                Healthcare Management System
+                            </h3>
+                            <div
+                                style="
+                                    margin-top: 14px;
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.08em;
+                                    color: var(--muted);
+                                    text-transform: uppercase;
+                                "
+                            >
+                                Multi-clinic healthcare platform
+                            </div>
+                        </div>
+                        <p style="margin: 0; font-size: 18px; line-height: 1.5; text-wrap: pretty">
+                            A healthcare management platform covering appointments, queue management, doctors, patients
+                            and operational workflows.
+                        </p>
+                        <div style="border-top: 1px solid var(--line); padding-top: 18px">
+                            <div
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.1em;
+                                    color: var(--muted);
+                                    margin-bottom: 8px;
+                                "
+                            >
+                                MY ROLE
+                            </div>
+                            <div style="font-size: 16px; line-height: 1.5">
+                                Architecture · Database Design · Backend · Product Engineering
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- P04 -->
+                <article
+                    data-reveal
+                    style="
+                        margin-top: clamp(64px, 11vw, 160px);
+                        background: var(--panel);
+                        border-radius: 10px;
+                        padding: clamp(24px, 4vw, 56px);
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 28px clamp(32px, 4vw, 64px);
+                        align-items: flex-end;
+                    "
+                >
+                    <div style="flex: 4 1 280px; display: flex; flex-direction: column; gap: 24px">
+                        <span
+                            style="
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                color: var(--muted);
+                                letter-spacing: 0.08em;
+                            "
+                            ><span style="color: var(--accent)">04</span> / 06</span
+                        >
+                        <div>
+                            <h3
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(28px, 2.8vw, 40px);
+                                    font-weight: 600;
+                                    letter-spacing: -0.04em;
+                                    line-height: 1;
+                                "
+                            >
+                                Hizmet Food Delivery
+                            </h3>
+                            <div
+                                style="
+                                    margin-top: 14px;
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.08em;
+                                    color: var(--muted);
+                                    text-transform: uppercase;
+                                "
+                            >
+                                Food delivery platform
+                            </div>
+                        </div>
+                        <p style="margin: 0; font-size: 18px; line-height: 1.5; text-wrap: pretty">
+                            A food delivery platform for online ordering from 200+ restaurants, making it easy to get
+                            favorite meals delivered.
+                        </p>
+                        <div style="border-top: 1px solid var(--line); padding-top: 18px">
+                            <div
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.1em;
+                                    color: var(--muted);
+                                    margin-bottom: 8px;
+                                "
+                            >
+                                MY ROLE
+                            </div>
+                            <div style="font-size: 16px; line-height: 1.5">Product Engineering · Full Stack</div>
+                        </div>
+                    </div>
+                    <div style="flex: 8 1 520px; min-width: 0">
+                        <div
+                            class="img-frame"
+                            style="
+                                border: 1px solid var(--line);
+                                border-radius: 10px;
+                                overflow: hidden;
+                                background: var(--surface);
+                                box-shadow: var(--shadow);
+                            "
+                        >
+                            <div style="aspect-ratio: 16/10; position: relative; overflow: hidden">
+                                <div
+                                    class="img-zoom"
+                                    style="
+                                        position: absolute;
+                                        inset: 0;
+                                        transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+                                    "
+                                >
+                                    <img
+                                        src="public/images/hizmet-rebuilt-2x.png"
+                                        alt="Hizmet Food Delivery screenshot"
+                                        style="width: 100%; height: 100%; object-fit: cover; display: block"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- P05 -->
+                <article
+                    data-reveal
+                    style="
+                        margin-top: clamp(64px, 11vw, 160px);
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 28px clamp(32px, 4vw, 64px);
+                        align-items: center;
+                    "
+                >
+                    <div style="flex: 7 1 520px; min-width: 0">
+                        <div
+                            class="img-frame"
+                            style="
+                                border: 1px solid var(--line);
+                                border-radius: 10px;
+                                overflow: hidden;
+                                background: var(--surface);
+                                box-shadow: var(--shadow);
+                            "
+                        >
+                            <div style="aspect-ratio: 16/10; position: relative; overflow: hidden">
+                                <div
+                                    class="img-zoom"
+                                    style="
+                                        position: absolute;
+                                        inset: 0;
+                                        transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+                                    "
+                                >
+                                    <img
+                                        src="public/images/hbk-rebuilt-2x.png"
+                                        alt="HarisaByKilo screenshot"
+                                        style="width: 100%; height: 100%; object-fit: cover; display: block"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex: 4 1 300px; display: flex; flex-direction: column; gap: 24px">
+                        <span
+                            style="
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                color: var(--muted);
+                                letter-spacing: 0.08em;
+                            "
+                            ><span style="color: var(--accent)">05</span> / 06</span
+                        >
+                        <div>
+                            <h3
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(28px, 2.8vw, 40px);
+                                    font-weight: 600;
+                                    letter-spacing: -0.04em;
+                                    line-height: 1;
+                                "
+                            >
+                                HarisaByKilo
+                            </h3>
+                            <div
+                                style="
+                                    margin-top: 14px;
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.08em;
+                                    color: var(--muted);
+                                    text-transform: uppercase;
+                                "
+                            >
+                                Online food ordering
+                            </div>
+                        </div>
+                        <p style="margin: 0; font-size: 18px; line-height: 1.5; text-wrap: pretty">
+                            An online platform for ordering Kashmir's delicacy, Harisa, delivered to your doorstep in
+                            five simple steps.
+                        </p>
+                        <div style="border-top: 1px solid var(--line); padding-top: 18px">
+                            <div
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.1em;
+                                    color: var(--muted);
+                                    margin-bottom: 8px;
+                                "
+                            >
+                                MY ROLE
+                            </div>
+                            <div style="font-size: 16px; line-height: 1.5">Product Engineering · Full Stack</div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- P06 -->
+                <article
+                    data-reveal
+                    style="
+                        margin-top: clamp(64px, 11vw, 160px);
+                        display: flex;
+                        flex-wrap: wrap;
+                        flex-direction: row-reverse;
+                        gap: 28px clamp(32px, 4vw, 64px);
+                        align-items: center;
+                    "
+                >
+                    <div style="flex: 7 1 520px; min-width: 0">
+                        <div
+                            class="img-frame"
+                            style="
+                                border: 1px solid var(--line);
+                                border-radius: 10px;
+                                overflow: hidden;
+                                background: var(--surface);
+                                box-shadow: var(--shadow);
+                            "
+                        >
+                            <div style="aspect-ratio: 16/10; position: relative; overflow: hidden">
+                                <div
+                                    class="img-zoom"
+                                    style="
+                                        position: absolute;
+                                        inset: 0;
+                                        transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+                                    "
+                                >
+                                    <img
+                                        src="public/images/kashmiro2-rebuilt-2x.png"
+                                        alt="KashmirO2 screenshot"
+                                        style="width: 100%; height: 100%; object-fit: cover; display: block"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex: 4 1 300px; display: flex; flex-direction: column; gap: 24px">
+                        <span
+                            style="
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                color: var(--muted);
+                                letter-spacing: 0.08em;
+                            "
+                            ><span style="color: var(--accent)">06</span> / 06</span
+                        >
+                        <div>
+                            <h3
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(28px, 2.8vw, 40px);
+                                    font-weight: 600;
+                                    letter-spacing: -0.04em;
+                                    line-height: 1;
+                                "
+                            >
+                                KashmirO2
+                            </h3>
+                            <div
+                                style="
+                                    margin-top: 14px;
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.08em;
+                                    color: var(--muted);
+                                    text-transform: uppercase;
+                                "
+                            >
+                                Non-profit oxygen supply initiative
+                            </div>
+                        </div>
+                        <p style="margin: 0; font-size: 18px; line-height: 1.5; text-wrap: pretty">
+                            A non-profit initiative launched during the COVID-19 pandemic to provide essential medical
+                            oxygen to those in need.
+                        </p>
+                        <div style="border-top: 1px solid var(--line); padding-top: 18px">
+                            <div
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.1em;
+                                    color: var(--muted);
+                                    margin-bottom: 8px;
+                                "
+                            >
+                                MY ROLE
+                            </div>
+                            <div style="font-size: 16px; line-height: 1.5">Product Engineering · Full Stack</div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- PARTNERSHIP -->
+            <section
+                data-screen-label="Technical Partnership"
+                style="max-width: 1440px; margin: 0 auto; padding: clamp(72px, 12vw, 176px) clamp(20px, 4vw, 56px) 0"
+            >
+                <div
+                    style="
+                        border-top: 1px solid var(--fg);
+                        padding-top: 44px;
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 40px 32px;
+                        align-items: flex-start;
+                    "
+                >
+                    <div
+                        data-reveal
+                        class="sticky-col"
+                        style="flex: 5 1 360px; display: flex; flex-direction: column; gap: 24px"
+                    >
+                        <div
+                            style="
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                letter-spacing: 0.08em;
+                                color: var(--muted);
+                            "
+                        >
+                            <span style="color: var(--accent)">04</span> / TECHNICAL PARTNERSHIP
+                        </div>
+                        <h2
+                            style="
+                                margin: 4px 0 0;
+                                font-weight: 600;
+                                font-size: clamp(32px, 4.2vw, 60px);
+                                line-height: 0.95;
+                                letter-spacing: -0.045em;
+                                text-wrap: balance;
+                            "
+                        >
+                            Already have a product?
+                        </h2>
+                        <p
+                            style="
+                                margin: 0;
+                                font-size: clamp(17px, 1.5vw, 20px);
+                                color: var(--muted);
+                                line-height: 1.5;
+                                max-width: 460px;
+                                text-wrap: pretty;
+                            "
+                        >
+                            You don't always need someone to build everything from scratch. Sometimes you need someone
+                            to come in, understand the system and make it better.
+                        </p>
+                        <a href="#contact" class="btn-outline-gap" style="align-self: flex-start"
+                            >Discuss Your System <span>→</span></a
+                        >
+                    </div>
+                    <div style="flex: 7 1 420px">
+                        <div
+                            data-reveal
+                            style="
+                                display: flex;
+                                gap: 24px;
+                                align-items: baseline;
+                                padding: 24px 0;
+                                border-bottom: 1px solid var(--line);
+                            "
+                        >
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    width: 24px;
+                                    flex: none;
+                                "
+                                >01</span
+                            ><span style="font-size: clamp(19px, 1.7vw, 24px); letter-spacing: -0.015em"
+                                >Improve an existing architecture</span
+                            >
+                        </div>
+                        <div
+                            data-reveal
+                            style="
+                                display: flex;
+                                gap: 24px;
+                                align-items: baseline;
+                                padding: 24px 0;
+                                border-bottom: 1px solid var(--line);
+                            "
+                        >
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    width: 24px;
+                                    flex: none;
+                                "
+                                >02</span
+                            ><span style="font-size: clamp(19px, 1.7vw, 24px); letter-spacing: -0.015em"
+                                >Redesign problematic database structures</span
+                            >
+                        </div>
+                        <div
+                            data-reveal
+                            style="
+                                display: flex;
+                                gap: 24px;
+                                align-items: baseline;
+                                padding: 24px 0;
+                                border-bottom: 1px solid var(--line);
+                            "
+                        >
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    width: 24px;
+                                    flex: none;
+                                "
+                                >03</span
+                            ><span style="font-size: clamp(19px, 1.7vw, 24px); letter-spacing: -0.015em"
+                                >Optimize slow APIs and queries</span
+                            >
+                        </div>
+                        <div
+                            data-reveal
+                            style="
+                                display: flex;
+                                gap: 24px;
+                                align-items: baseline;
+                                padding: 24px 0;
+                                border-bottom: 1px solid var(--line);
+                            "
+                        >
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    width: 24px;
+                                    flex: none;
+                                "
+                                >04</span
+                            ><span style="font-size: clamp(19px, 1.7vw, 24px); letter-spacing: -0.015em"
+                                >Improve application performance</span
+                            >
+                        </div>
+                        <div
+                            data-reveal
+                            style="
+                                display: flex;
+                                gap: 24px;
+                                align-items: baseline;
+                                padding: 24px 0;
+                                border-bottom: 1px solid var(--line);
+                            "
+                        >
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    width: 24px;
+                                    flex: none;
+                                "
+                                >05</span
+                            ><span style="font-size: clamp(19px, 1.7vw, 24px); letter-spacing: -0.015em"
+                                >Set up or improve CI/CD</span
+                            >
+                        </div>
+                        <div
+                            data-reveal
+                            style="
+                                display: flex;
+                                gap: 24px;
+                                align-items: baseline;
+                                padding: 24px 0;
+                                border-bottom: 1px solid var(--line);
+                            "
+                        >
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    width: 24px;
+                                    flex: none;
+                                "
+                                >06</span
+                            ><span style="font-size: clamp(19px, 1.7vw, 24px); letter-spacing: -0.015em"
+                                >Migrate infrastructure</span
+                            >
+                        </div>
+                        <div
+                            data-reveal
+                            style="
+                                display: flex;
+                                gap: 24px;
+                                align-items: baseline;
+                                padding: 24px 0;
+                                border-bottom: 1px solid var(--line);
+                            "
+                        >
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    width: 24px;
+                                    flex: none;
+                                "
+                                >07</span
+                            ><span style="font-size: clamp(19px, 1.7vw, 24px); letter-spacing: -0.015em"
+                                >Add new modules / features</span
+                            >
+                        </div>
+                        <div
+                            data-reveal
+                            style="
+                                display: flex;
+                                gap: 24px;
+                                align-items: baseline;
+                                padding: 24px 0;
+                                border-bottom: 1px solid var(--line);
+                            "
+                        >
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    width: 24px;
+                                    flex: none;
+                                "
+                                >08</span
+                            ><span style="font-size: clamp(19px, 1.7vw, 24px); letter-spacing: -0.015em"
+                                >Improve deployment workflows</span
+                            >
+                        </div>
+                        <div
+                            data-reveal
+                            style="
+                                display: flex;
+                                gap: 24px;
+                                align-items: baseline;
+                                padding: 24px 0;
+                                border-bottom: 1px solid var(--line);
+                            "
+                        >
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    width: 24px;
+                                    flex: none;
+                                "
+                                >09</span
+                            ><span style="font-size: clamp(19px, 1.7vw, 24px); letter-spacing: -0.015em"
+                                >Review technical architecture</span
+                            >
+                        </div>
+                        <div
+                            data-reveal
+                            style="
+                                display: flex;
+                                gap: 24px;
+                                align-items: baseline;
+                                padding: 24px 0;
+                                border-bottom: 1px solid var(--line);
+                            "
+                        >
+                            <span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                    width: 24px;
+                                    flex: none;
+                                "
+                                >10</span
+                            ><span style="font-size: clamp(19px, 1.7vw, 24px); letter-spacing: -0.015em"
+                                >Take ownership of a backend or product area</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROCESS -->
+            <section
+                data-screen-label="Process"
+                style="max-width: 1440px; margin: 0 auto; padding: clamp(72px, 12vw, 176px) clamp(20px, 4vw, 56px) 0"
+            >
+                <div
+                    data-reveal
+                    style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 20px 32px;
+                        border-top: 1px solid var(--fg);
+                        padding-top: 44px;
+                    "
+                >
+                    <div
+                        style="
+                            flex: 3 1 200px;
+                            font:
+                                500 12px 'Geist Mono',
+                                monospace;
+                            letter-spacing: 0.08em;
+                            color: var(--muted);
+                        "
+                    >
+                        <span style="color: var(--accent)">05</span> / PROCESS
+                    </div>
+                    <h2
+                        style="
+                            flex: 9 1 520px;
+                            margin: 0;
+                            font-weight: 600;
+                            font-size: clamp(32px, 4.2vw, 60px);
+                            line-height: 0.95;
+                            letter-spacing: -0.045em;
+                        "
+                    >
+                        From idea to production
+                    </h2>
+                </div>
+                <div
+                    style="
+                        margin-top: clamp(48px, 6vw, 80px);
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: 40px 0;
+                    "
+                >
+                    <div
+                        data-reveal
+                        style="position: relative; border-top: 1px solid var(--line); padding: 36px 28px 0 0"
+                    >
+                        <span
+                            style="
+                                position: absolute;
+                                top: -6px;
+                                left: 0;
+                                width: 11px;
+                                height: 11px;
+                                border-radius: 50%;
+                                background: var(--bg);
+                                border: 1.5px solid var(--accent);
+                            "
+                        ></span>
+                        <div
+                            style="
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                color: var(--accent);
+                            "
+                        >
+                            01
+                        </div>
+                        <h3
+                            style="
+                                margin: 14px 0 10px;
+                                font-size: clamp(24px, 2.2vw, 30px);
+                                line-height: 1.1;
+                                font-weight: 600;
+                                letter-spacing: -0.03em;
+                            "
+                        >
+                            Understand
+                        </h3>
+                        <p style="margin: 0; font-size: 16px; line-height: 1.5; color: var(--muted); text-wrap: pretty">
+                            Understand the business, users and requirements.
+                        </p>
+                    </div>
+                    <div
+                        data-reveal
+                        style="position: relative; border-top: 1px solid var(--line); padding: 36px 28px 0 0"
+                    >
+                        <span
+                            style="
+                                position: absolute;
+                                top: -6px;
+                                left: 0;
+                                width: 11px;
+                                height: 11px;
+                                border-radius: 50%;
+                                background: var(--bg);
+                                border: 1.5px solid var(--accent);
+                            "
+                        ></span>
+                        <div
+                            style="
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                color: var(--accent);
+                            "
+                        >
+                            02
+                        </div>
+                        <h3
+                            style="
+                                margin: 14px 0 10px;
+                                font-size: clamp(24px, 2.2vw, 30px);
+                                line-height: 1.1;
+                                font-weight: 600;
+                                letter-spacing: -0.03em;
+                            "
+                        >
+                            Architect
+                        </h3>
+                        <p style="margin: 0; font-size: 16px; line-height: 1.5; color: var(--muted); text-wrap: pretty">
+                            Define the system architecture, database model and technical approach.
+                        </p>
+                    </div>
+                    <div
+                        data-reveal
+                        style="position: relative; border-top: 1px solid var(--line); padding: 36px 28px 0 0"
+                    >
+                        <span
+                            style="
+                                position: absolute;
+                                top: -6px;
+                                left: 0;
+                                width: 11px;
+                                height: 11px;
+                                border-radius: 50%;
+                                background: var(--bg);
+                                border: 1.5px solid var(--accent);
+                            "
+                        ></span>
+                        <div
+                            style="
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                color: var(--accent);
+                            "
+                        >
+                            03
+                        </div>
+                        <h3
+                            style="
+                                margin: 14px 0 10px;
+                                font-size: clamp(24px, 2.2vw, 30px);
+                                line-height: 1.1;
+                                font-weight: 600;
+                                letter-spacing: -0.03em;
+                            "
+                        >
+                            Build
+                        </h3>
+                        <p style="margin: 0; font-size: 16px; line-height: 1.5; color: var(--muted); text-wrap: pretty">
+                            Develop the product with maintainability and performance in mind.
+                        </p>
+                    </div>
+                    <div
+                        data-reveal
+                        style="position: relative; border-top: 1px solid var(--line); padding: 36px 28px 0 0"
+                    >
+                        <span
+                            style="
+                                position: absolute;
+                                top: -6px;
+                                left: 0;
+                                width: 11px;
+                                height: 11px;
+                                border-radius: 50%;
+                                background: var(--bg);
+                                border: 1.5px solid var(--accent);
+                            "
+                        ></span>
+                        <div
+                            style="
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                color: var(--accent);
+                            "
+                        >
+                            04
+                        </div>
+                        <h3
+                            style="
+                                margin: 14px 0 10px;
+                                font-size: clamp(24px, 2.2vw, 30px);
+                                line-height: 1.1;
+                                font-weight: 600;
+                                letter-spacing: -0.03em;
+                            "
+                        >
+                            Ship
+                        </h3>
+                        <p style="margin: 0; font-size: 16px; line-height: 1.5; color: var(--muted); text-wrap: pretty">
+                            Set up infrastructure, CI/CD and production deployment.
+                        </p>
+                    </div>
+                    <div
+                        data-reveal
+                        style="position: relative; border-top: 1px solid var(--line); padding: 36px 28px 0 0"
+                    >
+                        <span
+                            style="
+                                position: absolute;
+                                top: -6px;
+                                left: 0;
+                                width: 11px;
+                                height: 11px;
+                                border-radius: 50%;
+                                background: var(--accent);
+                                border: 1.5px solid var(--accent);
+                            "
+                        ></span>
+                        <div
+                            style="
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                color: var(--accent);
+                            "
+                        >
+                            05
+                        </div>
+                        <h3
+                            style="
+                                margin: 14px 0 10px;
+                                font-size: clamp(24px, 2.2vw, 30px);
+                                line-height: 1.1;
+                                font-weight: 600;
+                                letter-spacing: -0.03em;
+                            "
+                        >
+                            Improve
+                        </h3>
+                        <p style="margin: 0; font-size: 16px; line-height: 1.5; color: var(--muted); text-wrap: pretty">
+                            Monitor, optimize and iterate as the product grows.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WHO -->
+            <section
+                data-screen-label="Working Together"
+                style="max-width: 1440px; margin: 0 auto; padding: clamp(72px, 12vw, 176px) clamp(20px, 4vw, 56px) 0"
+            >
+                <div
+                    data-reveal
+                    style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 20px 32px;
+                        border-top: 1px solid var(--fg);
+                        padding-top: 44px;
+                    "
+                >
+                    <div
+                        style="
+                            flex: 3 1 200px;
+                            font:
+                                500 12px 'Geist Mono',
+                                monospace;
+                            letter-spacing: 0.08em;
+                            color: var(--muted);
+                        "
+                    >
+                        <span style="color: var(--accent)">06</span> / WORKING TOGETHER
+                    </div>
+                    <h2
+                        style="
+                            flex: 9 1 520px;
+                            margin: 0;
+                            font-weight: 600;
+                            font-size: clamp(32px, 4.2vw, 60px);
+                            line-height: 0.95;
+                            letter-spacing: -0.045em;
+                        "
+                    >
+                        Who I work with
+                    </h2>
+                </div>
+                <div
+                    data-reveal
+                    style="
+                        margin-top: clamp(48px, 6vw, 80px);
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+                        gap: 12px;
+                    "
+                >
+                    <div
+                        style="
+                            min-height: 220px;
+                            padding: clamp(24px, 3vw, 40px);
+                            border: 1px solid var(--line);
+                            border-radius: 10px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            gap: 40px;
+                            color: var(--fg);
+                        "
+                    >
+                        <div style="display: flex; justify-content: space-between; align-items: baseline">
+                            <span style="font-size: clamp(24px, 2.2vw, 30px); font-weight: 600; letter-spacing: -0.03em"
+                                >Startups</span
+                            ><span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                "
+                                >01</span
+                            >
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px">
+                            <p
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(18px, 1.6vw, 22px);
+                                    line-height: 1.4;
+                                    color: var(--muted);
+                                    max-width: 380px;
+                                    text-wrap: pretty;
+                                "
+                            >
+                                Need someone to turn an idea into a working product?
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        style="
+                            min-height: 220px;
+                            padding: clamp(24px, 3vw, 40px);
+                            border: 1px solid var(--line);
+                            border-radius: 10px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            gap: 40px;
+                            color: var(--fg);
+                        "
+                    >
+                        <div style="display: flex; justify-content: space-between; align-items: baseline">
+                            <span style="font-size: clamp(24px, 2.2vw, 30px); font-weight: 600; letter-spacing: -0.03em"
+                                >Businesses</span
+                            ><span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                "
+                                >02</span
+                            >
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px">
+                            <p
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(18px, 1.6vw, 22px);
+                                    line-height: 1.4;
+                                    color: var(--muted);
+                                    max-width: 380px;
+                                    text-wrap: pretty;
+                                "
+                            >
+                                Need custom software or internal systems to improve operations?
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        style="
+                            min-height: 220px;
+                            padding: clamp(24px, 3vw, 40px);
+                            border: 1px solid var(--line);
+                            border-radius: 10px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            gap: 40px;
+                            color: var(--fg);
+                        "
+                    >
+                        <div style="display: flex; justify-content: space-between; align-items: baseline">
+                            <span style="font-size: clamp(24px, 2.2vw, 30px); font-weight: 600; letter-spacing: -0.03em"
+                                >Founders</span
+                            ><span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                "
+                                >03</span
+                            >
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px">
+                            <p
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(18px, 1.6vw, 22px);
+                                    line-height: 1.4;
+                                    color: var(--muted);
+                                    max-width: 380px;
+                                    text-wrap: pretty;
+                                "
+                            >
+                                Have a product idea but need a senior engineer to build it?
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        style="
+                            min-height: 220px;
+                            padding: clamp(24px, 3vw, 40px);
+                            border: 1px solid var(--line);
+                            border-radius: 10px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            gap: 40px;
+                            color: var(--fg);
+                        "
+                    >
+                        <div style="display: flex; justify-content: space-between; align-items: baseline">
+                            <span style="font-size: clamp(24px, 2.2vw, 30px); font-weight: 600; letter-spacing: -0.03em"
+                                >Agencies</span
+                            ><span
+                                style="
+                                    font:
+                                        500 12px 'Geist Mono',
+                                        monospace;
+                                    color: var(--accent);
+                                "
+                                >04</span
+                            >
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px">
+                            <p
+                                style="
+                                    margin: 0;
+                                    font-size: clamp(18px, 1.6vw, 22px);
+                                    line-height: 1.4;
+                                    color: var(--muted);
+                                    max-width: 380px;
+                                    text-wrap: pretty;
+                                "
+                            >
+                                Need an experienced engineering partner to execute client projects?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TECH -->
+            <section
+                data-screen-label="Technology"
+                style="max-width: 1440px; margin: 0 auto; padding: clamp(72px, 12vw, 176px) clamp(20px, 4vw, 56px) 0"
+            >
+                <div
+                    data-reveal
+                    style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 20px 32px;
+                        border-top: 1px solid var(--fg);
+                        padding-top: 44px;
+                    "
+                >
+                    <div
+                        style="
+                            flex: 3 1 200px;
+                            font:
+                                500 12px 'Geist Mono',
+                                monospace;
+                            letter-spacing: 0.08em;
+                            color: var(--muted);
+                        "
+                    >
+                        <span style="color: var(--accent)">07</span> / TECHNOLOGY
+                    </div>
+                    <div style="flex: 9 1 520px">
+                        <h2
+                            style="
+                                margin: 0;
+                                font-weight: 600;
+                                font-size: clamp(32px, 4.2vw, 60px);
+                                line-height: 0.95;
+                                letter-spacing: -0.045em;
+                            "
+                        >
+                            The tools behind the work
+                        </h2>
+                        <p
+                            style="
+                                margin: 20px 0 0;
+                                font-size: clamp(17px, 1.5vw, 20px);
+                                color: var(--muted);
+                                line-height: 1.5;
+                            "
+                        >
+                            Technology is a means to solve the problem, not the product itself.
+                        </p>
+                    </div>
+                </div>
+                <div style="margin-top: clamp(48px, 6vw, 80px); border-top: 1px solid var(--line)">
+                    <div
+                        data-reveal
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 8px 32px;
+                            padding: 24px 0;
+                            border-bottom: 1px solid var(--line);
+                            align-items: baseline;
+                        "
+                    >
+                        <div
+                            style="
+                                flex: 3 1 200px;
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                letter-spacing: 0.08em;
+                                color: var(--muted);
+                            "
+                        >
+                            FRONTEND
+                        </div>
+                        <div
+                            style="
+                                flex: 9 1 420px;
+                                font-size: clamp(20px, 2vw, 28px);
+                                letter-spacing: -0.02em;
+                                line-height: 1.35;
+                            "
+                        >
+                            React <span style="color: var(--line)">/</span> Next.js
+                            <span style="color: var(--line)">/</span> TypeScript
+                            <span style="color: var(--line)">/</span> Tailwind CSS
+                        </div>
+                    </div>
+                    <div
+                        data-reveal
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 8px 32px;
+                            padding: 24px 0;
+                            border-bottom: 1px solid var(--line);
+                            align-items: baseline;
+                        "
+                    >
+                        <div
+                            style="
+                                flex: 3 1 200px;
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                letter-spacing: 0.08em;
+                                color: var(--muted);
+                            "
+                        >
+                            BACKEND
+                        </div>
+                        <div
+                            style="
+                                flex: 9 1 420px;
+                                font-size: clamp(20px, 2vw, 28px);
+                                letter-spacing: -0.02em;
+                                line-height: 1.35;
+                            "
+                        >
+                            TypeScript <span style="color: var(--line)">/</span> Node.js
+                            <span style="color: var(--line)">/</span> Go
+                            <span style="color: var(--line)">/</span> Python
+                            <span style="color: var(--line)">/</span> NestJS
+                            <span style="color: var(--line)">/</span> Express
+                        </div>
+                    </div>
+                    <div
+                        data-reveal
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 8px 32px;
+                            padding: 24px 0;
+                            border-bottom: 1px solid var(--line);
+                            align-items: baseline;
+                        "
+                    >
+                        <div
+                            style="
+                                flex: 3 1 200px;
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                letter-spacing: 0.08em;
+                                color: var(--muted);
+                            "
+                        >
+                            DATA
+                        </div>
+                        <div
+                            style="
+                                flex: 9 1 420px;
+                                font-size: clamp(20px, 2vw, 28px);
+                                letter-spacing: -0.02em;
+                                line-height: 1.35;
+                            "
+                        >
+                            PostgreSQL <span style="color: var(--line)">/</span> MongoDB
+                            <span style="color: var(--line)">/</span> Redis
+                        </div>
+                    </div>
+                    <div
+                        data-reveal
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 8px 32px;
+                            padding: 24px 0;
+                            border-bottom: 1px solid var(--line);
+                            align-items: baseline;
+                        "
+                    >
+                        <div
+                            style="
+                                flex: 3 1 200px;
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                letter-spacing: 0.08em;
+                                color: var(--muted);
+                            "
+                        >
+                            INFRASTRUCTURE
+                        </div>
+                        <div
+                            style="
+                                flex: 9 1 420px;
+                                font-size: clamp(20px, 2vw, 28px);
+                                letter-spacing: -0.02em;
+                                line-height: 1.35;
+                            "
+                        >
+                            AWS <span style="color: var(--line)">/</span> Docker
+                            <span style="color: var(--line)">/</span> Nginx
+                            <span style="color: var(--line)">/</span> Cloudflare
+                        </div>
+                    </div>
+                    <div
+                        data-reveal
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 8px 32px;
+                            padding: 24px 0;
+                            border-bottom: 1px solid var(--line);
+                            align-items: baseline;
+                        "
+                    >
+                        <div
+                            style="
+                                flex: 3 1 200px;
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                letter-spacing: 0.08em;
+                                color: var(--muted);
+                            "
+                        >
+                            AI
+                        </div>
+                        <div
+                            style="
+                                flex: 9 1 420px;
+                                font-size: clamp(20px, 2vw, 28px);
+                                letter-spacing: -0.02em;
+                                line-height: 1.35;
+                            "
+                        >
+                            LLM APIs <span style="color: var(--line)">/</span> AI Integrations
+                            <span style="color: var(--line)">/</span> Computer Vision
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABOUT -->
+            <section
+                id="about"
+                data-screen-label="About"
+                style="
+                    scroll-margin-top: 64px;
+                    max-width: 1440px;
+                    margin: 0 auto;
+                    padding: clamp(72px, 12vw, 176px) clamp(20px, 4vw, 56px) 0;
+                "
+            >
+                <div
+                    style="
+                        border-top: 1px solid var(--fg);
+                        padding-top: 44px;
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 40px 32px;
+                    "
+                >
+                    <div data-reveal style="flex: 3 1 200px; display: flex; flex-direction: column; gap: 28px">
+                        <div
+                            style="
+                                font:
+                                    500 12px 'Geist Mono',
+                                    monospace;
+                                letter-spacing: 0.08em;
+                                color: var(--muted);
+                            "
+                        >
+                            <span style="color: var(--accent)">08</span> / ABOUT
+                        </div>
+                        <div
+                            class="portrait-frame"
+                            style="
+                                width: 100%;
+                                max-width: 300px;
+                                aspect-ratio: 4/5;
+                                border-radius: 10px;
+                                overflow: hidden;
+                                border: 1px solid var(--line);
+                                filter: grayscale(1) contrast(1.05);
+                                transition: filter 0.6s;
+                            "
+                        >
+                            <img
+                                src="public/images/about-portrait.avif"
+                                alt="Portrait of Cirhan"
+                                style="width: 100%; height: 100%; object-fit: cover; display: block"
+                            />
+                        </div>
+                    </div>
+                    <div data-reveal style="flex: 9 1 520px; display: flex; flex-direction: column; gap: 36px">
+                        <h2
+                            style="
+                                margin: 0;
+                                font-weight: 600;
+                                font-size: clamp(32px, 4.2vw, 60px);
+                                line-height: 0.95;
+                                letter-spacing: -0.045em;
+                            "
+                        >
+                            A little about me
+                        </h2>
+                        <p
+                            style="
+                                margin: 0;
+                                font-size: clamp(22px, 2.3vw, 34px);
+                                line-height: 1.3;
+                                letter-spacing: -0.02em;
+                                color: var(--muted);
+                                max-width: 980px;
+                                text-wrap: pretty;
+                            "
+                        >
+                            I'm a <span style="color: var(--fg)">Lead Product Engineer</span> with
+                            <span data-years>7</span>+ years of experience building software products across the
+                            <span style="color: var(--fg)">entire product lifecycle</span> — from product requirements
+                            and database design to backend architecture, frontend development, infrastructure and
+                            production deployment.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px; max-width: 900px">
+                            <span
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.04em;
+                                    border: 1px solid var(--line);
+                                    border-radius: 4px;
+                                    padding: 5px 8px;
+                                    color: var(--muted);
+                                "
+                                >Product Engineering</span
+                            ><span
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.04em;
+                                    border: 1px solid var(--line);
+                                    border-radius: 4px;
+                                    padding: 5px 8px;
+                                    color: var(--muted);
+                                "
+                                >End-to-End Ownership</span
+                            ><span
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.04em;
+                                    border: 1px solid var(--line);
+                                    border-radius: 4px;
+                                    padding: 5px 8px;
+                                    color: var(--muted);
+                                "
+                                >Complex Business Applications</span
+                            ><span
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.04em;
+                                    border: 1px solid var(--line);
+                                    border-radius: 4px;
+                                    padding: 5px 8px;
+                                    color: var(--muted);
+                                "
+                                >Architecture</span
+                            ><span
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.04em;
+                                    border: 1px solid var(--line);
+                                    border-radius: 4px;
+                                    padding: 5px 8px;
+                                    color: var(--muted);
+                                "
+                                >Backend</span
+                            ><span
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.04em;
+                                    border: 1px solid var(--line);
+                                    border-radius: 4px;
+                                    padding: 5px 8px;
+                                    color: var(--muted);
+                                "
+                                >Frontend</span
+                            ><span
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.04em;
+                                    border: 1px solid var(--line);
+                                    border-radius: 4px;
+                                    padding: 5px 8px;
+                                    color: var(--muted);
+                                "
+                                >Infrastructure</span
+                            ><span
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.04em;
+                                    border: 1px solid var(--line);
+                                    border-radius: 4px;
+                                    padding: 5px 8px;
+                                    color: var(--muted);
+                                "
+                                >AI</span
+                            ><span
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.04em;
+                                    border: 1px solid var(--accent);
+                                    color: var(--accent);
+                                    border-radius: 4px;
+                                    padding: 5px 8px;
+                                "
+                                >Problem Solving</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section
+                id="contact"
+                data-screen-label="Contact"
+                style="
+                    scroll-margin-top: 64px;
+                    max-width: 1440px;
+                    margin: 0 auto;
+                    padding: clamp(72px, 12vw, 176px) clamp(20px, 4vw, 56px) 0;
+                "
+            >
+                <div
+                    data-reveal
+                    style="
+                        background: var(--inv-bg);
+                        color: var(--inv-fg);
+                        border: 1px solid var(--inv-line);
+                        border-radius: 10px;
+                        padding: clamp(28px, 6vw, 96px);
+                    "
+                >
+                    <div
+                        style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: space-between;
+                            gap: 12px 24px;
+                            font:
+                                500 12px 'Geist Mono',
+                                monospace;
+                            letter-spacing: 0.08em;
+                            text-transform: uppercase;
+                            color: var(--inv-muted);
+                        "
+                    >
+                        <span><span style="color: var(--accent)">09</span> / CONTACT</span
+                        ><span style="display: flex; align-items: center; gap: 10px"
+                            ><span
+                                style="
+                                    width: 7px;
+                                    height: 7px;
+                                    border-radius: 50%;
+                                    background: var(--accent);
+                                    box-shadow: 0 0 0 4px color-mix(in oklch, var(--accent) 18%, transparent);
+                                "
+                            ></span
+                            >Available for freelance / contract</span
+                        >
+                    </div>
+                    <h2
+                        style="
+                            margin: clamp(28px, 4vw, 48px) 0 0;
+                            font-weight: 600;
+                            font-size: clamp(36px, 5.8vw, 92px);
+                            line-height: 0.92;
+                            letter-spacing: -0.05em;
+                            max-width: 1100px;
+                            text-wrap: balance;
+                        "
+                    >
+                        Have something you want to build?
+                    </h2>
+                    <div
+                        style="
+                            margin-top: clamp(32px, 4vw, 56px);
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 32px 48px;
+                            align-items: flex-end;
+                            justify-content: space-between;
+                        "
+                    >
+                        <p
+                            style="
+                                flex: 0 1 600px;
+                                margin: 0;
+                                font-size: clamp(18px, 1.6vw, 22px);
+                                line-height: 1.5;
+                                color: var(--inv-muted);
+                                text-wrap: pretty;
+                            "
+                        >
+                            Whether you're starting a new product, improving an existing system, or need a senior
+                            engineer to take ownership of your technical work — let's talk.
+                        </p>
+                        <a href="mailto:khancirhan@gmail.com" class="btn-accent cta-btn"
+                            >Start a Conversation <span>→</span></a
+                        >
+                    </div>
+                    <div
+                        style="
+                            margin-top: clamp(48px, 6vw, 88px);
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                            border-top: 1px solid var(--inv-line);
+                        "
+                    >
+                        <a
+                            href="mailto:khancirhan@gmail.com"
+                            class="contact-link"
+                            style="
+                                padding: 22px 20px 4px 0;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 8px;
+                                color: var(--inv-fg);
+                            "
+                            ><span
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.1em;
+                                    color: var(--inv-muted);
+                                "
+                                >EMAIL</span
+                            ><span style="font-size: 18px">khancirhan@gmail.com ↗</span></a
+                        >
+                        <a
+                            href="https://www.linkedin.com/in/khancirhan"
+                            target="_blank"
+                            rel="noopener"
+                            class="contact-link"
+                            style="
+                                padding: 22px 20px 4px 0;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 8px;
+                                color: var(--inv-fg);
+                            "
+                            ><span
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.1em;
+                                    color: var(--inv-muted);
+                                "
+                                >LINKEDIN</span
+                            ><span style="font-size: 18px">in/khancirhan ↗</span></a
+                        >
+                        <a
+                            href="https://github.com/khancirhan"
+                            target="_blank"
+                            rel="noopener"
+                            class="contact-link"
+                            style="
+                                padding: 22px 20px 4px 0;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 8px;
+                                color: var(--inv-fg);
+                            "
+                            ><span
+                                style="
+                                    font:
+                                        500 11px 'Geist Mono',
+                                        monospace;
+                                    letter-spacing: 0.1em;
+                                    color: var(--inv-muted);
+                                "
+                                >GITHUB</span
+                            ><span style="font-size: 18px">github.com/khancirhan ↗</span></a
+                        >
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer
+            data-screen-label="Footer"
+            style="max-width: 1440px; margin: 0 auto; padding: clamp(72px, 8vw, 120px) clamp(20px, 4vw, 56px) 32px"
+        >
+            <div style="display: flex; flex-wrap: wrap; gap: 40px 32px; padding-bottom: 48px">
+                <div style="flex: 6 1 300px; display: flex; flex-direction: column; gap: 10px">
+                    <div
+                        style="
+                            font-weight: 600;
+                            font-size: 15px;
+                            letter-spacing: 0.02em;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        "
+                    >
+                        <svg
+                            viewBox="0 0 100 100"
+                            width="22"
+                            height="22"
+                            aria-hidden="true"
+                            style="display: block; overflow: visible; flex: none"
+                        >
+                            <g transform="translate(0 0)">
+                                <clipPath id="lgF00"><rect x="0" y="0" width="47" height="47"></rect></clipPath>
+                                <g clip-path="url(#lgF00)">
+                                    <circle
+                                        cx="50"
+                                        cy="50"
+                                        r="35"
+                                        fill="none"
+                                        stroke-width="20"
+                                        stroke="currentColor"
+                                    ></circle>
+                                </g>
+                            </g>
+                            <g transform="translate(0 0)">
+                                <clipPath id="lgF053"><rect x="0" y="53" width="47" height="47"></rect></clipPath>
+                                <g clip-path="url(#lgF053)">
+                                    <circle
+                                        cx="50"
+                                        cy="50"
+                                        r="35"
+                                        fill="none"
+                                        stroke-width="20"
+                                        stroke="currentColor"
+                                    ></circle>
+                                </g>
+                            </g>
+                            <g transform="translate(0 0)">
+                                <clipPath id="lgF5353"><rect x="53" y="53" width="47" height="47"></rect></clipPath>
+                                <g clip-path="url(#lgF5353)">
+                                    <circle
+                                        cx="50"
+                                        cy="50"
+                                        r="35"
+                                        fill="none"
+                                        stroke-width="20"
+                                        stroke="currentColor"
+                                    ></circle>
+                                </g>
+                            </g>
+                            <g transform="translate(7 -7)">
+                                <clipPath id="lgF530"><rect x="53" y="0" width="47" height="47"></rect></clipPath>
+                                <g clip-path="url(#lgF530)">
+                                    <circle
+                                        cx="50"
+                                        cy="50"
+                                        r="35"
+                                        fill="none"
+                                        stroke-width="20"
+                                        style="stroke: var(--accent)"
+                                    ></circle>
+                                </g>
+                            </g></svg
+                        >CIRHAN Y.
+                    </div>
+                    <div style="font-size: 15px; color: var(--muted)">Lead Product Engineer</div>
+                    <div
+                        style="
+                            margin-top: 20px;
+                            font-size: clamp(24px, 2.6vw, 36px);
+                            font-weight: 500;
+                            letter-spacing: -0.03em;
+                        "
+                    >
+                        Build. Architect. Ship. Improve.
+                    </div>
+                </div>
+                <div style="flex: 2 1 140px; display: flex; flex-direction: column; gap: 10px; font-size: 15px">
+                    <div
+                        style="
+                            font:
+                                500 11px 'Geist Mono',
+                                monospace;
+                            letter-spacing: 0.1em;
+                            color: var(--muted);
+                            margin-bottom: 6px;
+                        "
+                    >
+                        SITE
+                    </div>
+                    <a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a>
+                </div>
+                <div style="flex: 2 1 140px; display: flex; flex-direction: column; gap: 10px; font-size: 15px">
+                    <div
+                        style="
+                            font:
+                                500 11px 'Geist Mono',
+                                monospace;
+                            letter-spacing: 0.1em;
+                            color: var(--muted);
+                            margin-bottom: 6px;
+                        "
+                    >
+                        CONTACT
+                    </div>
+                    <a href="mailto:khancirhan@gmail.com">Email</a
+                    ><a href="https://www.linkedin.com/in/khancirhan" target="_blank" rel="noopener">LinkedIn</a
+                    ><a href="https://github.com/khancirhan" target="_blank" rel="noopener">GitHub</a>
+                </div>
+            </div>
+            <div
+                style="
+                    border-top: 1px solid var(--line);
+                    padding-top: 20px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    gap: 12px;
+                    font:
+                        500 11px 'Geist Mono',
+                        monospace;
+                    letter-spacing: 0.1em;
+                    color: var(--muted);
+                "
+            >
+                <span>© 2026 CIRHAN YAQOOB</span>
+                <a href="#top">BACK TO TOP ↑</a>
+            </div>
+        </footer>
+
+        <script>
+            (function () {
+                var root = document.documentElement;
+                var nav = document.getElementById('nav');
+                var burger = document.getElementById('menuToggle');
+                var mobileMenu = document.getElementById('mobileMenu');
+                var themeBtns = document.querySelectorAll('[data-theme-toggle]');
+
+                var years = new Date().getFullYear() - 2019;
+                document.querySelectorAll('[data-years]').forEach(function (el) {
+                    el.textContent = years;
+                });
+
+                function setMenu(open) {
+                    mobileMenu.classList.toggle('open', open);
+                    burger.classList.toggle('open', open);
+                    burger.setAttribute('aria-expanded', open);
+                    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+                    nav.classList.toggle('menu-open', open);
+                }
+                burger.addEventListener('click', function () {
+                    setMenu(!mobileMenu.classList.contains('open'));
+                });
+                document.querySelectorAll('[data-menu-link]').forEach(function (el) {
+                    el.addEventListener('click', function () {
+                        setMenu(false);
+                    });
+                });
+                window.addEventListener('resize', function () {
+                    if (window.innerWidth >= 760) setMenu(false);
+                });
+
+                function onScroll() {
+                    nav.classList.toggle('scrolled', window.scrollY > 12);
+                }
+                window.addEventListener('scroll', onScroll, { passive: true });
+                onScroll();
+
+                function updateThemeUI() {
+                    var dark = root.getAttribute('data-theme') === 'dark';
+                    themeBtns.forEach(function (btn) {
+                        var label = btn.querySelector('.theme-label');
+                        if (label) label.textContent = dark ? 'LIGHT' : 'DARK';
+                    });
+                }
+                themeBtns.forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                        root.setAttribute('data-theme', next);
+                        try {
+                            localStorage.setItem('theme', next);
+                        } catch (e) {}
+                        updateThemeUI();
+                    });
+                });
+                updateThemeUI();
+
+                var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (!reduceMotion) {
+                    var ease = 'cubic-bezier(.2,.7,.2,1)';
+                    var reveals = document.querySelectorAll('[data-reveal]');
+                    reveals.forEach(function (el) {
+                        el.style.opacity = '0';
+                        el.style.transform = 'translateY(20px)';
+                    });
+                    var io = new IntersectionObserver(
+                        function (entries) {
+                            entries.forEach(function (entry) {
+                                if (!entry.isIntersecting) return;
+                                var el = entry.target;
+                                var sibs = Array.from(el.parentElement.children).filter(function (c) {
+                                    return c.hasAttribute('data-reveal');
+                                });
+                                var d = Math.min(sibs.indexOf(el), 6) * 60;
+                                el.style.transition =
+                                    'opacity .8s ' + ease + ' ' + d + 'ms, transform .8s ' + ease + ' ' + d + 'ms';
+                                el.style.opacity = '1';
+                                el.style.transform = 'none';
+                                io.unobserve(el);
+                            });
+                        },
+                        { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+                    );
+                    reveals.forEach(function (el) {
+                        io.observe(el);
+                    });
+                } else {
+                    document.querySelectorAll('[data-reveal]').forEach(function (el) {
+                        el.style.opacity = '1';
+                        el.style.transform = 'none';
+                    });
+                }
+            })();
+        </script>
+    </body>
+</html>
